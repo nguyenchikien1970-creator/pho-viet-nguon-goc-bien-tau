@@ -2,6 +2,11 @@
 
 Website tĩnh giới thiệu nguồn gốc, khoa học nước dùng và sự khác biệt giữa Phở Bắc và Phở Nam.
 
+## Đường dẫn
+
+- GitHub: https://github.com/nguyenchikien1970-creator/pho-viet-nguon-goc-bien-tau
+- Vercel Production: https://pho-viet-nguon-goc-bien-tau.vercel.app
+
 ## Nội dung
 
 - `index.html`: Trang website chính.
