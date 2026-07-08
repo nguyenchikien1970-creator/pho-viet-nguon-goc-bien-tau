@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phở Việt: Nguồn gốc và Biến tấu</title>
+  <meta name="description" content="Trang nghiên cứu trực quan về nguồn gốc, khoa học nước dùng và sự khác biệt giữa Phở Bắc và Phở Nam.">
+  <style>
+    :root {
+      --ink: #211f1d;
+      --muted: #6b625b;
+      --paper: #fffdf8;
+      --surface: #ffffff;
+      --line: #e6dfd5;
+      --broth: #b56a25;
+      --deep-red: #8b2f22;
+      --leaf: #246b45;
+      --leaf-soft: #e8f3ec;
+      --gold-soft: #fff2d8;
+      --shadow: 0 18px 50px rgba(44, 34, 24, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.68;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: var(--deep-red);
+      text-underline-offset: 0.18em;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(19, 18, 16, 0.78), rgba(19, 18, 16, 0.5) 46%, rgba(19, 18, 16, 0.1)),
+        url("pho-bac-pho-nam.jpeg") center / cover no-repeat;
+      color: #fffaf2;
+    }
+
+    .hero__content {
+      max-width: 760px;
+      padding: 96px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 4px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      max-width: 880px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0;
+      color: rgba(255, 250, 242, 0.86);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+    }
+
+    .hero__facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .fact {
+      min-height: 108px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .fact strong {
+      display: block;
+      color: #fff;
+      font-size: 1.7rem;
+      line-height: 1.1;
+    }
+
+    .fact span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 250, 242, 0.78);
+      font-size: 0.92rem;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.94);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav__inner {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      overflow-x: auto;
+      padding: 12px 0;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: var(--gold-soft);
+      outline: none;
+    }
+
+    main {
+      padding: 84px 0 0;
+    }
+
+    section {
+      margin-bottom: 96px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-head .kicker {
+      margin: 0 0 10px;
+      color: var(--deep-red);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 4vw, 4rem);
+    }
+
+    .section-head p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .prose {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .prose h3 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
+    }
+
+    .prose p {
+      margin: 0 0 18px;
+      color: #36302b;
+    }
+
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .note {
+      padding: 24px;
+      border: 1px solid #d9c39e;
+      border-radius: var(--radius);
+      background: var(--gold-soft);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--deep-red);
+      font-size: 1.05rem;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .timeline article {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .timeline strong {
+      display: block;
+      color: var(--deep-red);
+      font-size: 1.05rem;
+    }
+
+    .timeline span {
+      display: block;
+      margin: 10px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .science {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .science article {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      min-height: 260px;
+    }
+
+    .science h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+    }
+
+    .science p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .compare-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .photo-compare {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #11100f;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-frame {
+      position: relative;
+      background: #11100f;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: auto;
+    }
+
+    .label {
+      position: absolute;
+      top: 16px;
+      max-width: calc(50% - 26px);
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .label--north {
+      left: 16px;
+      background: rgba(139, 47, 34, 0.94);
+    }
+
+    .label--south {
+      right: 16px;
+      background: rgba(36, 107, 69, 0.94);
+    }
+
+    .photo-caption {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      color: #fffaf2;
+    }
+
+    .photo-caption div {
+      padding: 20px;
+    }
+
+    .photo-caption div + div {
+      border-left: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .photo-caption strong {
+      display: block;
+      margin-bottom: 6px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+    }
+
+    .photo-caption p {
+      margin: 0;
+      color: rgba(255, 250, 242, 0.78);
+      font-size: 0.95rem;
+    }
+
+    .comparison-table {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr 1fr;
+      border-top: 1px solid var(--line);
+    }
+
+    .comparison-row:first-child {
+      border-top: 0;
+      background: var(--ink);
+      color: #fffaf2;
+      font-weight: 800;
+    }
+
+    .comparison-row > div {
+      padding: 18px;
+    }
+
+    .comparison-row > div + div {
+      border-left: 1px solid var(--line);
+    }
+
+    .comparison-row:first-child > div + div {
+      border-left-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .comparison-row:not(:first-child) > div:first-child {
+      color: var(--deep-red);
+      font-weight: 800;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 24px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .profile__tabs {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .tab {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      font-weight: 800;
+    }
+
+    .tab[aria-selected="true"] {
+      border-color: var(--deep-red);
+      background: var(--gold-soft);
+      color: var(--deep-red);
+    }
+
+    .bars {
+      display: grid;
+      gap: 14px;
+    }
+
+    .bar {
+      display: grid;
+      gap: 7px;
+    }
+
+    .bar__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .bar__track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #eee8df;
+    }
+
+    .bar__fill {
+      width: var(--value);
+      height: 100%;
+      border-radius: inherit;
+      background: var(--deep-red);
+      transition: width 240ms ease;
+    }
+
+    .bar--south .bar__fill {
+      background: var(--leaf);
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    blockquote p {
+      margin: 0;
+      color: #332d28;
+    }
+
+    blockquote footer {
+      margin-top: 18px;
+      color: var(--deep-red);
+      font-weight: 800;
+    }
+
+    .references {
+      padding: 54px 0 70px;
+      border-top: 1px solid var(--line);
+      background: #f7f2eb;
+    }
+
+    .references h2 {
+      margin-bottom: 22px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+    }
+
+    .references ol {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+      }
+
+      .hero__facts,
+      .lead-grid,
+      .timeline,
+      .science,
+      .profile,
+      .quote-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap {
+        width: min(100% - 28px, 1120px);
+      }
+
+      main {
+        padding-top: 56px;
+      }
+
+      section {
+        margin-bottom: 72px;
+      }
+
+      .hero__content {
+        padding: 74px 0;
+      }
+
+      .fact,
+      .prose,
+      .note,
+      .science article,
+      .timeline article,
+      .photo-caption div,
+      .comparison-row > div {
+        padding: 16px;
+      }
+
+      .photo-caption,
+      .comparison-row {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-caption div + div,
+      .comparison-row > div + div {
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .photo-caption div + div {
+        border-top-color: rgba(255, 255, 255, 0.14);
+      }
+
+      .label {
+        position: static;
+        display: inline-flex;
+        max-width: none;
+        margin: 10px 0 0 10px;
+      }
+
+      .label--south {
+        margin-left: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero__content">
+      <span class="eyebrow">Khảo cổ ẩm thực Việt Nam</span>
+      <h1>Phở Việt: Nguồn gốc và Biến tấu</h1>
+      <p>Từ một món ăn đường phố của miền Bắc đầu thế kỷ 20, phở đã trở thành biểu tượng toàn cầu. Nhưng dù đi qua Nam Định, Hà Nội, Sài Gòn hay thời bao cấp, linh hồn của phở vẫn neo trong nồi nước dùng xương bò ninh lâu và bộ gia vị nền tảng.</p>
+      <div class="hero__facts" aria-label="Các điểm chính của bài nghiên cứu">
+        <div class="fact">
+          <strong>1900</strong>
+          <span>Giai đoạn nghề phở Vân Cù, Nam Định bắt đầu định hình.</span>
+        </div>
+        <div class="fact">
+          <strong>8-10 giờ</strong>
+          <span>Thời gian ninh xương nền tảng để tạo vị ngọt, gelatin và độ sâu.</span>
+        </div>
+        <div class="fact">
+          <strong>2 trục vị</strong>
+          <span>Phở Bắc thanh tao, tối giản. Phở Nam phong phú, đậm và nhiều rau.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Điều hướng nội dung">
+    <div class="wrap nav__inner">
+      <a href="#dan-nhap">Dẫn nhập</a>
+      <a href="#nguon-goc">Nguồn gốc</a>
+      <a href="#khoa-hoc">Nước dùng</a>
+      <a href="#so-sanh">Phở Bắc - Phở Nam</a>
+      <a href="#bao-cap">Bao cấp</a>
+      <a href="#van-chuong">Văn chương</a>
+      <a href="#tong-luan">Tổng luận</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="dan-nhap" class="wrap">
+      <div class="section-head">
+        <p class="kicker">1. Dẫn nhập</p>
+        <h2>Từ đứt gãy lịch sử đến mỏ neo căn cước</h2>
+        <p>Phở không chỉ là món súp có bánh phở, thịt bò hoặc gà và rau thơm. Trong báo cáo gốc, phở được nhìn như một hệ sinh thái ẩm thực chứa lịch sử, sinh hóa học, địa lý, văn chương và bản sắc Việt Nam.</p>
+      </div>
+      <div class="lead-grid">
+        <article class="prose">
+          <h3>Một đại sứ văn hóa không chính thức</h3>
+          <p>Từ thức quà bình dân phục vụ tầng lớp cần lao miền Bắc, phở đã vượt qua biên giới địa lý và ý thức hệ để trở thành biểu tượng văn hóa toàn cầu. Việc từ "pho" đi vào các từ điển tiếng Anh lớn và sự xuất hiện của nhiều quán phở trong Michelin Guide cho thấy món ăn này đã bước ra khỏi phạm vi địa phương.</p>
+          <p>Điều quan trọng hơn là phở không đứng yên. Mỗi vùng đất thêm vào một lớp thực vật, gia vị và thói quen thưởng thức riêng. Tuy vậy, báo cáo nhấn mạnh một nguyên lý bất biến: phở phải dựa trên nước dùng chiết xuất từ xương động vật qua quá trình ninh hầm kéo dài, kết hợp với tổ hợp gia vị thảo mộc nền tảng.</p>
+        </article>
+        <aside class="note">
+          <strong>Luận điểm trung tâm</strong>
+          <p>Rau, thịt, tương, giấm, chanh hay quẩy có thể biến đổi theo vùng miền. Cái "gốc" giữ định danh của phở là nước dùng xương bò ninh lâu, được làm trong, làm thơm và cân bằng bằng gừng, hành nướng, quế, hồi, thảo quả, nước mắm cùng kỹ thuật hớt bọt kiên nhẫn.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="nguon-goc" class="wrap">
+      <div class="section-head">
+        <p class="kicker">2. Khảo cổ học ẩm thực</p>
+        <h2>Nguồn gốc phôi thai và trục Phở Bắc</h2>
+        <p>Báo cáo đặt phở trong bối cảnh giao thoa đầu thế kỷ 20, nhưng đồng thời phản biện các giả thuyết ngoại lai đơn giản hóa nguồn gốc món ăn.</p>
+      </div>
+      <div class="timeline">
+        <article>
+          <strong>Pot-au-feu</strong>
+          <span>Giả thuyết Pháp</span>
+          <p>Điểm giống chủ yếu là thịt bò và âm thanh "feu". Nhưng pot-au-feu dùng rau củ ôn đới, thịt hầm nguyên tảng và ăn với bánh mì, khác hẳn cấu trúc nước dùng kết hợp tinh bột dạng sợi của phở.</p>
+        </article>
+        <article>
+          <strong>Ngưu nhục phấn</strong>
+          <span>Giả thuyết người Hoa</span>
+          <p>Món này có hình thức mỳ nước thịt bò, nhưng nước dùng thiên về vị thuốc Bắc với hệ gia vị phức tạp. Phở Việt tiết chế hơn, dùng bánh tráng mỏng cắt dẹt và nước mắm bản địa.</p>
+        </article>
+        <article>
+          <strong>Xáo trâu</strong>
+          <span>Gốc bản địa</span>
+          <p>Giả thuyết được báo cáo đánh giá thuyết phục nhất: phở tiến hóa từ xáo trâu của miền Bắc. Khi thịt bò và xương bò dư ra trong thời Pháp thuộc, người bán xáo thay trâu bằng bò và tinh chỉnh gia vị.</p>
+        </article>
+        <article>
+          <strong>Nam Định - Hà Nội</strong>
+          <span>Lan tỏa và thăng hoa</span>
+          <p>Vân Cù, Nam Định được xem là cái nôi nghề phở. Hà Nội là nơi chuẩn hóa tiêu chí nước trong, bánh dẻo, thịt thái đúng thớ và biến phở thành biểu tượng văn hóa đô thị.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="khoa-hoc" class="wrap">
+      <div class="section-head">
+        <p class="kicker">3. Khoa học hóa sinh</p>
+        <h2>Nước dùng là phần hồn của phở</h2>
+        <p>Việc ninh xương 8-10 tiếng không chỉ là truyền thống. Dưới lăng kính khoa học thực phẩm, đó là quá trình kiểm soát mùi, chiết xuất collagen, tạo gelatin và giữ nước dùng trong.</p>
+      </div>
+      <div class="science">
+        <article>
+          <h3>Phản ứng Maillard</h3>
+          <p>Gừng và hành tây được nướng xém trước khi cho vào nồi. Nhiệt độ cao làm đường và axit amin tương tác, tạo hương caramel, hương khói nhẹ và giúp trung hòa mùi ngái của mỡ bò.</p>
+        </article>
+        <article>
+          <h3>Collagen thành gelatin</h3>
+          <p>Xương ống và mô liên kết cần thời gian dài để thủy phân collagen thành gelatin. Gelatin tạo cảm giác miệng mượt, đầy và sâu, dù nước dùng không cần phải đặc như súp hầm phương Tây.</p>
+        </article>
+        <article>
+          <h3>Độ trong không phải nhạt</h3>
+          <p>Nước trong là nước không bị vẩn bởi protein kết tủa và mỡ nhũ tương hóa. Người nấu phải giữ lửa lăn tăn, hớt bọt liên tục, tránh sôi mạnh làm nước đục và vị nặng.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="so-sanh" class="wrap">
+      <div class="section-head">
+        <p class="kicker">4. Phân mảnh vùng miền</p>
+        <h2>So sánh trực quan Phở Bắc và Phở Nam</h2>
+        <p>Ảnh đính kèm được đặt đúng tại phần đối sánh: bên trái là Phở Bắc tối giản, nước trong, ít rau sống; bên phải là Phở Nam phong phú với rau, giá, chanh, tương đen và tương đỏ.</p>
+      </div>
+
+      <div class="compare-layout">
+        <figure class="photo-compare">
+          <div class="photo-frame">
+            <span class="label label--north">Phở Bắc - bên trái</span>
+            <span class="label label--south">Phở Nam - bên phải</span>
+            <img src="pho-bac-pho-nam.jpeg" alt="Ảnh so sánh Phở Bắc bên trái và Phở Nam bên phải với rau sống, gia vị và nước dùng khác nhau.">
+          </div>
+          <figcaption class="photo-caption">
+            <div>
+              <strong>Phở Bắc: thanh, trong, tối giản</strong>
+              <p>Tập trung vào nước hầm xương, thịt bò thái mỏng, hành lá, hành chẻ, ngò rí. Rau sống đĩa ngoài thường không xuất hiện để giữ nhiệt và giữ vị nguyên bản.</p>
+            </div>
+            <div>
+              <strong>Phở Nam: đậm, phong phú, nhiều rau</strong>
+              <p>Nước dùng thường ngọt và béo hơn. Bàn ăn có giá, húng quế, ngò gai, rau ngổ, chanh, ớt, tương đen hoisin và tương đỏ để thực khách tự cá nhân hóa.</p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <div class="comparison-table" role="table" aria-label="Bảng so sánh Phở Bắc và Phở Nam">
+          <div class="comparison-row" role="row">
+            <div role="columnheader">Đặc trưng</div>
+            <div role="columnheader">Phở Bắc</div>
+            <div role="columnheader">Phở Nam</div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">Triết lý</div>
+            <div role="cell">Tối giản, thanh tao, tôn vinh vị nguyên bản của nước hầm xương.</div>
+            <div role="cell">Phóng khoáng, đa vị, cho phép người ăn tự điều chỉnh hương vị.</div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">Nước dùng</div>
+            <div role="cell">Trong vắt, ngọt thanh từ xương bò, gia vị khô dùng tiết chế.</div>
+            <div role="cell">Hơi đục hơn, béo hơn, vị ngọt rõ hơn nhờ đường phèn và khẩu vị miền Nam.</div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">Bánh phở</div>
+            <div role="cell">Bản to, dẹt, mềm nhưng không nát.</div>
+            <div role="cell">Sợi nhỏ hơn, thuôn dài và dai hơn, gần thói quen ăn bún, hủ tiếu miền Nam.</div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">Topping thịt</div>
+            <div role="cell">Tái, chín, nạm, gầu, thái mỏng và giữ cấu trúc cổ điển.</div>
+            <div role="cell">Đa dạng hơn, có thể có gân, sách bò, bò viên và nhiều lựa chọn khác.</div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">Rau ăn kèm</div>
+            <div role="cell">Hành lá, hành tây chẻ, ngò rí. Không dùng đĩa rau sống lớn.</div>
+            <div role="cell">Giá, húng quế, ngò gai, rau ngổ. Đĩa rau là một phần bản sắc.</div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">Gia vị bàn ăn</div>
+            <div role="cell">Giấm tỏi, ớt tươi, đôi khi quẩy để tạo tương phản giòn.</div>
+            <div role="cell">Chanh, ớt, tương đen hoisin, tương đỏ. Dấu ấn giao thoa ẩm thực Hoa - Việt.</div>
+          </div>
+        </div>
+
+        <div class="profile" aria-label="Biểu đồ hương vị dạng thanh">
+          <div class="profile__tabs" role="tablist" aria-label="Chọn hồ sơ hương vị">
+            <button class="tab" type="button" id="tab-north" role="tab" aria-selected="true" aria-controls="profile-panel" data-region="north">Hồ sơ Phở Bắc</button>
+            <button class="tab" type="button" id="tab-south" role="tab" aria-selected="false" aria-controls="profile-panel" data-region="south">Hồ sơ Phở Nam</button>
+          </div>
+          <div id="profile-panel" role="tabpanel" aria-labelledby="tab-north">
+            <div class="bars" id="bars"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bao-cap" class="wrap">
+      <div class="section-head">
+        <p class="kicker">5. Dấu ấn thời bao cấp</p>
+        <h2>"Phở không người lái" và sức bền của ký ức</h2>
+        <p>Trong giai đoạn khan hiếm trước Đổi mới 1986, dân gian gọi những bát phở có nước, bánh và hành nhưng vắng thịt là "phở không người lái". Cụm từ chua xót này cho thấy phở vẫn sống trong ký ức tập thể ngay cả khi nguyên liệu bị thiếu hụt.</p>
+      </div>
+      <article class="prose">
+        <h3>Một bảo tàng sống của đời thường</h3>
+        <p>Người Hà Nội thời bao cấp phải xếp hàng với tem phiếu, đôi khi dùng dép hoặc gạch để giữ chỗ. Bát phở mậu dịch thiếu thịt nhưng vẫn cố giữ mùi quế hồi và vị xương hầm, như một cách níu lại nếp sống thị dân thanh lịch trong thiếu thốn.</p>
+        <p>Thông điệp của phần này không phải thi vị hóa nghèo khó. Nó nhắc rằng phần cốt lõi của phở - nước dùng xương và ký ức cộng đồng - đủ mạnh để tồn tại qua biến động kinh tế, chiến tranh và đứt gãy xã hội.</p>
+      </article>
+    </section>
+
+    <section id="van-chuong" class="wrap">
+      <div class="section-head">
+        <p class="kicker">6. Phở trong văn chương</p>
+        <h2>Khi một bát phở trở thành ngôn ngữ ký ức</h2>
+        <p>Những cây bút lớn đã biến phở từ món ăn đường phố thành đối tượng mỹ học, xã hội học và căn tính dân tộc.</p>
+      </div>
+      <div class="quote-grid">
+        <blockquote>
+          <p>Nguyễn Tuân xem phở là một món quà cổ điển giàu khí chất dân tộc, đồng thời tạo ra một lớp từ vựng sành ăn như "quả thăn", "mũ phở" và thú ăn "xẩu".</p>
+          <footer>Nguyễn Tuân</footer>
+        </blockquote>
+        <blockquote>
+          <p>Thạch Lam chuẩn hóa tiêu chí bát phở ngon: nước dùng trong và ngọt, bánh dẻo không nát, thịt mỡ gầu giòn, chanh ớt và hành tây đủ vị.</p>
+          <footer>Thạch Lam</footer>
+        </blockquote>
+        <blockquote>
+          <p>Vũ Bằng viết về phở như bản đồ ký ức của người xa xứ, nơi vị ngọt tự nhiên của nước dùng không thể bị thay thế bằng chất hóa học.</p>
+          <footer>Vũ Bằng</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="tong-luan" class="wrap">
+      <div class="section-head">
+        <p class="kicker">7. Tổng luận</p>
+        <h2>Tính thống nhất trong đa dạng</h2>
+        <p>Phở Bắc, Phở Nam hay phở thời bao cấp đều là các biến thiên bề mặt của cùng một hệ gen ẩm thực. Thịt, rau, tương và thói quen ăn kèm có thể đổi thay; nước dùng xương bò ninh lâu, gừng hành nướng và bộ gia vị nền tảng vẫn là phần hồn.</p>
+      </div>
+      <article class="prose">
+        <h3>Hệ gen ẩm thực của phở</h3>
+        <p>Báo cáo kết luận rằng phở là một thực thể sống động, vừa có nền tảng khoa học sinh hóa, vừa có chiều sâu văn hóa. Sự khác biệt vùng miền không phá vỡ định nghĩa của phở; trái lại, nó chứng minh khả năng thích nghi của món ăn khi đi qua khí hậu, lịch sử và cộng đồng khác nhau.</p>
+        <p>Vì vậy, cuộc viễn chinh toàn cầu của phở trong thế kỷ 21 dù có thêm nhiều biến tấu vẫn không nên tách khỏi cái gốc: nồi nước dùng xương ống ninh 8-10 tiếng, được làm thơm bằng phản ứng Maillard của gừng hành nướng, được giữ trong bằng kỹ thuật lửa nhỏ và hớt bọt, rồi hoàn thiện bằng văn hóa thưởng thức Việt Nam.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="references">
+    <div class="wrap">
+      <h2>Nguồn tham khảo trong PDF</h2>
+      <ol>
+        <li><a href="https://vannhanso.com/blog/pho-viet-nam-tu-coi-nguon-toi-bieu-tuong-van-hoa-toan-cau">Phở Việt Nam - từ cội nguồn tới biểu tượng văn hóa toàn cầu</a></li>
+        <li><a href="https://www.youtube.com/watch?v=vuGA1Y9nkWM">Vì sao có sự khác biệt rõ rệt giữa Phở miền Bắc và Phở miền Nam?</a></li>
+        <li><a href="https://hellobacsi.com/an-uong-lanh-manh/thong-tin-dinh-duong/nuoc-ham-xuong/">Nước hầm xương vừa ngọt tự nhiên lại bổ dưỡng</a></li>
+        <li><a href="https://tintuconline.com.vn/nau-pho-kho-nhat-lam-nuoc-dung-day-la-tron-bo-bi-kip-nau-nuoc-dung-pho-ngon-ngot-nhat-454508.html">Bí kíp nấu nước dùng phở ngon</a></li>
+        <li><a href="https://www.unitedvision.com.vn/blogs/mon-a-au/phan-ung-maillard-la-gi">Phản ứng Maillard là gì</a></li>
+        <li><a href="https://www.youtube.com/watch?v=rs1JLYXROVU">Why the Maillard Reaction Makes Everything Delicious</a></li>
+        <li><a href="https://bvnguyentriphuong.com.vn/tin-tu-cac-co-so-y-te/nuoc-ham-xuong-thanh-phan-dinh-duong-co-che-tac-dung-va-loi-ich-suc-khoe-tiem-nang">Nước hầm xương: thành phần dinh dưỡng và lợi ích sức khỏe tiềm năng</a></li>
+        <li><a href="https://danviet.vn/6-sai-lam-khi-ham-xuong-bao-sao-nuoc-xuong-ham-bi-duc-khong-thom-2022091803193049-d831637.html">Sai lầm khi hầm xương khiến nước đục</a></li>
+        <li><a href="https://hanoimoi.vn/phong-su-anh-ky-uc-thoi-bao-cap-317320.html">Ký ức thời bao cấp</a></li>
+        <li><a href="https://foodelivietnam.com/pho-trong-van-chuong-viet-nam-net-dep-am-thuc-ha-noi.html">Phở trong văn chương Việt Nam</a></li>
+      </ol>
+    </div>
+  </footer>
+
+  <script>
+    const profiles = {
+      north: {
+        tab: "tab-north",
+        className: "",
+        rows: [
+          ["Độ thanh", 94],
+          ["Vị ngọt tự nhiên", 68],
+          ["Độ béo", 44],
+          ["Hương quế hồi", 76],
+          ["Rau sống", 12],
+          ["Khả năng cá nhân hóa", 34]
+        ]
+      },
+      south: {
+        tab: "tab-south",
+        className: "bar--south",
+        rows: [
+          ["Độ thanh", 58],
+          ["Vị ngọt rõ", 92],
+          ["Độ béo", 78],
+          ["Hương quế hồi", 54],
+          ["Rau sống", 96],
+          ["Khả năng cá nhân hóa", 90]
+        ]
+      }
+    };
+
+    const bars = document.querySelector("#bars");
+    const tabs = document.querySelectorAll(".tab");
+    const panel = document.querySelector("#profile-panel");
+
+    function renderProfile(region) {
+      const profile = profiles[region];
+      bars.innerHTML = profile.rows.map(([label, value]) => `
+        <div class="bar ${profile.className}">
+          <div class="bar__top">
+            <span>${label}</span>
+            <span>${value}/100</span>
+          </div>
+          <div class="bar__track" aria-hidden="true">
+            <div class="bar__fill" style="--value: ${value}%"></div>
+          </div>
+        </div>
+      `).join("");
+
+      tabs.forEach((tab) => {
+        const selected = tab.dataset.region === region;
+        tab.setAttribute("aria-selected", selected ? "true" : "false");
+      });
+      panel.setAttribute("aria-labelledby", profile.tab);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => renderProfile(tab.dataset.region));
+    });
+
+    renderProfile("north");
+  </script>
+</body>
+</html>
