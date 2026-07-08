@@ -1,6 +1,6 @@
 # Phở Việt: Nguồn gốc và Biến tấu
 
-Website tĩnh giới thiệu nguồn gốc, khoa học nước dùng và sự khác biệt giữa Phở Bắc và Phở Nam.
+Website tĩnh đa ngôn ngữ giới thiệu nguồn gốc, khoa học nước dùng và sự khác biệt giữa Phở Bắc và Phở Nam.
 
 ## Đường dẫn
 
@@ -12,6 +12,16 @@ Website tĩnh giới thiệu nguồn gốc, khoa học nước dùng và sự kh
 - `index.html`: Trang website chính.
 - `pho-bac-pho-nam.jpeg`: Ảnh so sánh Phở Bắc và Phở Nam.
 - `vercel.json`: Cấu hình route tĩnh cho Vercel.
+
+## Ngôn ngữ
+
+Trang hiện hỗ trợ:
+
+- Tiếng Việt
+- Deutsch
+- English
+- Français
+- Español
 
 ## Kiểm tra local
 

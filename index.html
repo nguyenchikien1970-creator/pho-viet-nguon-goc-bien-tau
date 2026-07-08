@@ -15,7 +15,6 @@
       --broth: #b56a25;
       --deep-red: #8b2f22;
       --leaf: #246b45;
-      --leaf-soft: #e8f3ec;
       --gold-soft: #fff2d8;
       --shadow: 0 18px 50px rgba(44, 34, 24, 0.12);
       --radius: 8px;
@@ -63,7 +62,7 @@
     }
 
     .hero__content {
-      max-width: 760px;
+      max-width: 780px;
       padding: 96px 0;
     }
 
@@ -93,11 +92,11 @@
       margin: 22px 0 18px;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(3rem, 8vw, 6.8rem);
-      max-width: 880px;
+      max-width: 920px;
     }
 
     .hero p {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0;
       color: rgba(255, 250, 242, 0.86);
       font-size: clamp(1.05rem, 2vw, 1.3rem);
@@ -166,6 +165,41 @@
       outline: none;
     }
 
+    .language-switcher {
+      margin-left: auto;
+      display: inline-flex;
+      flex: 0 0 auto;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+    }
+
+    .language-switcher button {
+      min-width: 44px;
+      min-height: 34px;
+      padding: 6px 10px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .language-switcher button[aria-pressed="true"] {
+      background: var(--deep-red);
+      color: #fffaf2;
+    }
+
+    .language-switcher button:focus-visible {
+      outline: 2px solid var(--broth);
+      outline-offset: 2px;
+    }
+
     main {
       padding: 84px 0 0;
     }
@@ -175,11 +209,11 @@
     }
 
     .section-head {
-      max-width: 760px;
+      max-width: 780px;
       margin-bottom: 34px;
     }
 
-    .section-head .kicker {
+    .kicker {
       margin: 0 0 10px;
       color: var(--deep-red);
       font-size: 0.82rem;
@@ -207,17 +241,28 @@
       align-items: start;
     }
 
-    .prose {
-      padding: 30px;
+    .prose,
+    .note,
+    .timeline article,
+    .science article,
+    blockquote {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--surface);
+    }
+
+    .prose {
+      padding: 30px;
       box-shadow: var(--shadow);
     }
 
-    .prose h3 {
+    .prose h3,
+    .science h3 {
       margin: 0 0 12px;
       font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .prose h3 {
       font-size: 1.55rem;
     }
 
@@ -232,8 +277,7 @@
 
     .note {
       padding: 24px;
-      border: 1px solid #d9c39e;
-      border-radius: var(--radius);
+      border-color: #d9c39e;
       background: var(--gold-soft);
     }
 
@@ -248,14 +292,10 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 32px;
     }
 
     .timeline article {
       padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
     }
 
     .timeline strong {
@@ -273,6 +313,14 @@
       text-transform: uppercase;
     }
 
+    .timeline p,
+    .science p,
+    .note p,
+    blockquote p {
+      margin: 0;
+      color: var(--muted);
+    }
+
     .science {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -280,31 +328,22 @@
     }
 
     .science article {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
       min-height: 260px;
+      padding: 24px;
     }
 
     .science h3 {
-      margin: 0 0 12px;
       font-size: 1.35rem;
-    }
-
-    .science p {
-      margin: 0;
-      color: var(--muted);
     }
 
     .compare-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr);
       gap: 24px;
     }
 
     .photo-compare {
       overflow: hidden;
+      margin: 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: #11100f;
@@ -426,10 +465,6 @@
       align-content: start;
     }
 
-    button {
-      font: inherit;
-    }
-
     .tab {
       width: 100%;
       padding: 14px 16px;
@@ -438,6 +473,7 @@
       background: #fff;
       color: var(--ink);
       cursor: pointer;
+      font: inherit;
       text-align: left;
       font-weight: 800;
     }
@@ -495,14 +531,6 @@
     blockquote {
       margin: 0;
       padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-    }
-
-    blockquote p {
-      margin: 0;
-      color: #332d28;
     }
 
     blockquote footer {
@@ -545,8 +573,8 @@
         grid-template-columns: 1fr;
       }
 
-      .profile {
-        padding: 20px;
+      .language-switcher {
+        margin-left: 0;
       }
     }
 
@@ -608,311 +636,926 @@
 <body>
   <header class="hero">
     <div class="wrap hero__content">
-      <span class="eyebrow">Khảo cổ ẩm thực Việt Nam</span>
-      <h1>Phở Việt: Nguồn gốc và Biến tấu</h1>
-      <p>Từ một món ăn đường phố của miền Bắc đầu thế kỷ 20, phở đã trở thành biểu tượng toàn cầu. Nhưng dù đi qua Nam Định, Hà Nội, Sài Gòn hay thời bao cấp, linh hồn của phở vẫn neo trong nồi nước dùng xương bò ninh lâu và bộ gia vị nền tảng.</p>
-      <div class="hero__facts" aria-label="Các điểm chính của bài nghiên cứu">
-        <div class="fact">
-          <strong>1900</strong>
-          <span>Giai đoạn nghề phở Vân Cù, Nam Định bắt đầu định hình.</span>
-        </div>
-        <div class="fact">
-          <strong>8-10 giờ</strong>
-          <span>Thời gian ninh xương nền tảng để tạo vị ngọt, gelatin và độ sâu.</span>
-        </div>
-        <div class="fact">
-          <strong>2 trục vị</strong>
-          <span>Phở Bắc thanh tao, tối giản. Phở Nam phong phú, đậm và nhiều rau.</span>
-        </div>
-      </div>
+      <span class="eyebrow" id="hero-eyebrow"></span>
+      <h1 id="hero-title"></h1>
+      <p id="hero-copy"></p>
+      <div class="hero__facts" id="hero-facts" aria-label="Key facts"></div>
     </div>
   </header>
 
-  <nav class="nav" aria-label="Điều hướng nội dung">
+  <nav class="nav" aria-label="Site navigation">
     <div class="wrap nav__inner">
-      <a href="#dan-nhap">Dẫn nhập</a>
-      <a href="#nguon-goc">Nguồn gốc</a>
-      <a href="#khoa-hoc">Nước dùng</a>
-      <a href="#so-sanh">Phở Bắc - Phở Nam</a>
-      <a href="#bao-cap">Bao cấp</a>
-      <a href="#van-chuong">Văn chương</a>
-      <a href="#tong-luan">Tổng luận</a>
+      <a href="#dan-nhap" id="nav-intro"></a>
+      <a href="#nguon-goc" id="nav-origin"></a>
+      <a href="#khoa-hoc" id="nav-science"></a>
+      <a href="#so-sanh" id="nav-compare"></a>
+      <a href="#bao-cap" id="nav-memory"></a>
+      <a href="#van-chuong" id="nav-literature"></a>
+      <a href="#tong-luan" id="nav-summary"></a>
+      <div class="language-switcher" id="language-switcher" aria-label="Language selection"></div>
     </div>
   </nav>
 
-  <main>
-    <section id="dan-nhap" class="wrap">
-      <div class="section-head">
-        <p class="kicker">1. Dẫn nhập</p>
-        <h2>Từ đứt gãy lịch sử đến mỏ neo căn cước</h2>
-        <p>Phở không chỉ là món súp có bánh phở, thịt bò hoặc gà và rau thơm. Trong báo cáo gốc, phở được nhìn như một hệ sinh thái ẩm thực chứa lịch sử, sinh hóa học, địa lý, văn chương và bản sắc Việt Nam.</p>
-      </div>
-      <div class="lead-grid">
-        <article class="prose">
-          <h3>Một đại sứ văn hóa không chính thức</h3>
-          <p>Từ thức quà bình dân phục vụ tầng lớp cần lao miền Bắc, phở đã vượt qua biên giới địa lý và ý thức hệ để trở thành biểu tượng văn hóa toàn cầu. Việc từ "pho" đi vào các từ điển tiếng Anh lớn và sự xuất hiện của nhiều quán phở trong Michelin Guide cho thấy món ăn này đã bước ra khỏi phạm vi địa phương.</p>
-          <p>Điều quan trọng hơn là phở không đứng yên. Mỗi vùng đất thêm vào một lớp thực vật, gia vị và thói quen thưởng thức riêng. Tuy vậy, báo cáo nhấn mạnh một nguyên lý bất biến: phở phải dựa trên nước dùng chiết xuất từ xương động vật qua quá trình ninh hầm kéo dài, kết hợp với tổ hợp gia vị thảo mộc nền tảng.</p>
-        </article>
-        <aside class="note">
-          <strong>Luận điểm trung tâm</strong>
-          <p>Rau, thịt, tương, giấm, chanh hay quẩy có thể biến đổi theo vùng miền. Cái "gốc" giữ định danh của phở là nước dùng xương bò ninh lâu, được làm trong, làm thơm và cân bằng bằng gừng, hành nướng, quế, hồi, thảo quả, nước mắm cùng kỹ thuật hớt bọt kiên nhẫn.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section id="nguon-goc" class="wrap">
-      <div class="section-head">
-        <p class="kicker">2. Khảo cổ học ẩm thực</p>
-        <h2>Nguồn gốc phôi thai và trục Phở Bắc</h2>
-        <p>Báo cáo đặt phở trong bối cảnh giao thoa đầu thế kỷ 20, nhưng đồng thời phản biện các giả thuyết ngoại lai đơn giản hóa nguồn gốc món ăn.</p>
-      </div>
-      <div class="timeline">
-        <article>
-          <strong>Pot-au-feu</strong>
-          <span>Giả thuyết Pháp</span>
-          <p>Điểm giống chủ yếu là thịt bò và âm thanh "feu". Nhưng pot-au-feu dùng rau củ ôn đới, thịt hầm nguyên tảng và ăn với bánh mì, khác hẳn cấu trúc nước dùng kết hợp tinh bột dạng sợi của phở.</p>
-        </article>
-        <article>
-          <strong>Ngưu nhục phấn</strong>
-          <span>Giả thuyết người Hoa</span>
-          <p>Món này có hình thức mỳ nước thịt bò, nhưng nước dùng thiên về vị thuốc Bắc với hệ gia vị phức tạp. Phở Việt tiết chế hơn, dùng bánh tráng mỏng cắt dẹt và nước mắm bản địa.</p>
-        </article>
-        <article>
-          <strong>Xáo trâu</strong>
-          <span>Gốc bản địa</span>
-          <p>Giả thuyết được báo cáo đánh giá thuyết phục nhất: phở tiến hóa từ xáo trâu của miền Bắc. Khi thịt bò và xương bò dư ra trong thời Pháp thuộc, người bán xáo thay trâu bằng bò và tinh chỉnh gia vị.</p>
-        </article>
-        <article>
-          <strong>Nam Định - Hà Nội</strong>
-          <span>Lan tỏa và thăng hoa</span>
-          <p>Vân Cù, Nam Định được xem là cái nôi nghề phở. Hà Nội là nơi chuẩn hóa tiêu chí nước trong, bánh dẻo, thịt thái đúng thớ và biến phở thành biểu tượng văn hóa đô thị.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="khoa-hoc" class="wrap">
-      <div class="section-head">
-        <p class="kicker">3. Khoa học hóa sinh</p>
-        <h2>Nước dùng là phần hồn của phở</h2>
-        <p>Việc ninh xương 8-10 tiếng không chỉ là truyền thống. Dưới lăng kính khoa học thực phẩm, đó là quá trình kiểm soát mùi, chiết xuất collagen, tạo gelatin và giữ nước dùng trong.</p>
-      </div>
-      <div class="science">
-        <article>
-          <h3>Phản ứng Maillard</h3>
-          <p>Gừng và hành tây được nướng xém trước khi cho vào nồi. Nhiệt độ cao làm đường và axit amin tương tác, tạo hương caramel, hương khói nhẹ và giúp trung hòa mùi ngái của mỡ bò.</p>
-        </article>
-        <article>
-          <h3>Collagen thành gelatin</h3>
-          <p>Xương ống và mô liên kết cần thời gian dài để thủy phân collagen thành gelatin. Gelatin tạo cảm giác miệng mượt, đầy và sâu, dù nước dùng không cần phải đặc như súp hầm phương Tây.</p>
-        </article>
-        <article>
-          <h3>Độ trong không phải nhạt</h3>
-          <p>Nước trong là nước không bị vẩn bởi protein kết tủa và mỡ nhũ tương hóa. Người nấu phải giữ lửa lăn tăn, hớt bọt liên tục, tránh sôi mạnh làm nước đục và vị nặng.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="so-sanh" class="wrap">
-      <div class="section-head">
-        <p class="kicker">4. Phân mảnh vùng miền</p>
-        <h2>So sánh trực quan Phở Bắc và Phở Nam</h2>
-        <p>Ảnh đính kèm được đặt đúng tại phần đối sánh: bên trái là Phở Bắc tối giản, nước trong, ít rau sống; bên phải là Phở Nam phong phú với rau, giá, chanh, tương đen và tương đỏ.</p>
-      </div>
-
-      <div class="compare-layout">
-        <figure class="photo-compare">
-          <div class="photo-frame">
-            <span class="label label--north">Phở Bắc - bên trái</span>
-            <span class="label label--south">Phở Nam - bên phải</span>
-            <img src="pho-bac-pho-nam.jpeg" alt="Ảnh so sánh Phở Bắc bên trái và Phở Nam bên phải với rau sống, gia vị và nước dùng khác nhau.">
-          </div>
-          <figcaption class="photo-caption">
-            <div>
-              <strong>Phở Bắc: thanh, trong, tối giản</strong>
-              <p>Tập trung vào nước hầm xương, thịt bò thái mỏng, hành lá, hành chẻ, ngò rí. Rau sống đĩa ngoài thường không xuất hiện để giữ nhiệt và giữ vị nguyên bản.</p>
-            </div>
-            <div>
-              <strong>Phở Nam: đậm, phong phú, nhiều rau</strong>
-              <p>Nước dùng thường ngọt và béo hơn. Bàn ăn có giá, húng quế, ngò gai, rau ngổ, chanh, ớt, tương đen hoisin và tương đỏ để thực khách tự cá nhân hóa.</p>
-            </div>
-          </figcaption>
-        </figure>
-
-        <div class="comparison-table" role="table" aria-label="Bảng so sánh Phở Bắc và Phở Nam">
-          <div class="comparison-row" role="row">
-            <div role="columnheader">Đặc trưng</div>
-            <div role="columnheader">Phở Bắc</div>
-            <div role="columnheader">Phở Nam</div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">Triết lý</div>
-            <div role="cell">Tối giản, thanh tao, tôn vinh vị nguyên bản của nước hầm xương.</div>
-            <div role="cell">Phóng khoáng, đa vị, cho phép người ăn tự điều chỉnh hương vị.</div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">Nước dùng</div>
-            <div role="cell">Trong vắt, ngọt thanh từ xương bò, gia vị khô dùng tiết chế.</div>
-            <div role="cell">Hơi đục hơn, béo hơn, vị ngọt rõ hơn nhờ đường phèn và khẩu vị miền Nam.</div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">Bánh phở</div>
-            <div role="cell">Bản to, dẹt, mềm nhưng không nát.</div>
-            <div role="cell">Sợi nhỏ hơn, thuôn dài và dai hơn, gần thói quen ăn bún, hủ tiếu miền Nam.</div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">Topping thịt</div>
-            <div role="cell">Tái, chín, nạm, gầu, thái mỏng và giữ cấu trúc cổ điển.</div>
-            <div role="cell">Đa dạng hơn, có thể có gân, sách bò, bò viên và nhiều lựa chọn khác.</div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">Rau ăn kèm</div>
-            <div role="cell">Hành lá, hành tây chẻ, ngò rí. Không dùng đĩa rau sống lớn.</div>
-            <div role="cell">Giá, húng quế, ngò gai, rau ngổ. Đĩa rau là một phần bản sắc.</div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">Gia vị bàn ăn</div>
-            <div role="cell">Giấm tỏi, ớt tươi, đôi khi quẩy để tạo tương phản giòn.</div>
-            <div role="cell">Chanh, ớt, tương đen hoisin, tương đỏ. Dấu ấn giao thoa ẩm thực Hoa - Việt.</div>
-          </div>
-        </div>
-
-        <div class="profile" aria-label="Biểu đồ hương vị dạng thanh">
-          <div class="profile__tabs" role="tablist" aria-label="Chọn hồ sơ hương vị">
-            <button class="tab" type="button" id="tab-north" role="tab" aria-selected="true" aria-controls="profile-panel" data-region="north">Hồ sơ Phở Bắc</button>
-            <button class="tab" type="button" id="tab-south" role="tab" aria-selected="false" aria-controls="profile-panel" data-region="south">Hồ sơ Phở Nam</button>
-          </div>
-          <div id="profile-panel" role="tabpanel" aria-labelledby="tab-north">
-            <div class="bars" id="bars"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="bao-cap" class="wrap">
-      <div class="section-head">
-        <p class="kicker">5. Dấu ấn thời bao cấp</p>
-        <h2>"Phở không người lái" và sức bền của ký ức</h2>
-        <p>Trong giai đoạn khan hiếm trước Đổi mới 1986, dân gian gọi những bát phở có nước, bánh và hành nhưng vắng thịt là "phở không người lái". Cụm từ chua xót này cho thấy phở vẫn sống trong ký ức tập thể ngay cả khi nguyên liệu bị thiếu hụt.</p>
-      </div>
-      <article class="prose">
-        <h3>Một bảo tàng sống của đời thường</h3>
-        <p>Người Hà Nội thời bao cấp phải xếp hàng với tem phiếu, đôi khi dùng dép hoặc gạch để giữ chỗ. Bát phở mậu dịch thiếu thịt nhưng vẫn cố giữ mùi quế hồi và vị xương hầm, như một cách níu lại nếp sống thị dân thanh lịch trong thiếu thốn.</p>
-        <p>Thông điệp của phần này không phải thi vị hóa nghèo khó. Nó nhắc rằng phần cốt lõi của phở - nước dùng xương và ký ức cộng đồng - đủ mạnh để tồn tại qua biến động kinh tế, chiến tranh và đứt gãy xã hội.</p>
-      </article>
-    </section>
-
-    <section id="van-chuong" class="wrap">
-      <div class="section-head">
-        <p class="kicker">6. Phở trong văn chương</p>
-        <h2>Khi một bát phở trở thành ngôn ngữ ký ức</h2>
-        <p>Những cây bút lớn đã biến phở từ món ăn đường phố thành đối tượng mỹ học, xã hội học và căn tính dân tộc.</p>
-      </div>
-      <div class="quote-grid">
-        <blockquote>
-          <p>Nguyễn Tuân xem phở là một món quà cổ điển giàu khí chất dân tộc, đồng thời tạo ra một lớp từ vựng sành ăn như "quả thăn", "mũ phở" và thú ăn "xẩu".</p>
-          <footer>Nguyễn Tuân</footer>
-        </blockquote>
-        <blockquote>
-          <p>Thạch Lam chuẩn hóa tiêu chí bát phở ngon: nước dùng trong và ngọt, bánh dẻo không nát, thịt mỡ gầu giòn, chanh ớt và hành tây đủ vị.</p>
-          <footer>Thạch Lam</footer>
-        </blockquote>
-        <blockquote>
-          <p>Vũ Bằng viết về phở như bản đồ ký ức của người xa xứ, nơi vị ngọt tự nhiên của nước dùng không thể bị thay thế bằng chất hóa học.</p>
-          <footer>Vũ Bằng</footer>
-        </blockquote>
-      </div>
-    </section>
-
-    <section id="tong-luan" class="wrap">
-      <div class="section-head">
-        <p class="kicker">7. Tổng luận</p>
-        <h2>Tính thống nhất trong đa dạng</h2>
-        <p>Phở Bắc, Phở Nam hay phở thời bao cấp đều là các biến thiên bề mặt của cùng một hệ gen ẩm thực. Thịt, rau, tương và thói quen ăn kèm có thể đổi thay; nước dùng xương bò ninh lâu, gừng hành nướng và bộ gia vị nền tảng vẫn là phần hồn.</p>
-      </div>
-      <article class="prose">
-        <h3>Hệ gen ẩm thực của phở</h3>
-        <p>Báo cáo kết luận rằng phở là một thực thể sống động, vừa có nền tảng khoa học sinh hóa, vừa có chiều sâu văn hóa. Sự khác biệt vùng miền không phá vỡ định nghĩa của phở; trái lại, nó chứng minh khả năng thích nghi của món ăn khi đi qua khí hậu, lịch sử và cộng đồng khác nhau.</p>
-        <p>Vì vậy, cuộc viễn chinh toàn cầu của phở trong thế kỷ 21 dù có thêm nhiều biến tấu vẫn không nên tách khỏi cái gốc: nồi nước dùng xương ống ninh 8-10 tiếng, được làm thơm bằng phản ứng Maillard của gừng hành nướng, được giữ trong bằng kỹ thuật lửa nhỏ và hớt bọt, rồi hoàn thiện bằng văn hóa thưởng thức Việt Nam.</p>
-      </article>
-    </section>
-  </main>
+  <main id="main-content"></main>
 
   <footer class="references">
     <div class="wrap">
-      <h2>Nguồn tham khảo trong PDF</h2>
-      <ol>
-        <li><a href="https://vannhanso.com/blog/pho-viet-nam-tu-coi-nguon-toi-bieu-tuong-van-hoa-toan-cau">Phở Việt Nam - từ cội nguồn tới biểu tượng văn hóa toàn cầu</a></li>
-        <li><a href="https://www.youtube.com/watch?v=vuGA1Y9nkWM">Vì sao có sự khác biệt rõ rệt giữa Phở miền Bắc và Phở miền Nam?</a></li>
-        <li><a href="https://hellobacsi.com/an-uong-lanh-manh/thong-tin-dinh-duong/nuoc-ham-xuong/">Nước hầm xương vừa ngọt tự nhiên lại bổ dưỡng</a></li>
-        <li><a href="https://tintuconline.com.vn/nau-pho-kho-nhat-lam-nuoc-dung-day-la-tron-bo-bi-kip-nau-nuoc-dung-pho-ngon-ngot-nhat-454508.html">Bí kíp nấu nước dùng phở ngon</a></li>
-        <li><a href="https://www.unitedvision.com.vn/blogs/mon-a-au/phan-ung-maillard-la-gi">Phản ứng Maillard là gì</a></li>
-        <li><a href="https://www.youtube.com/watch?v=rs1JLYXROVU">Why the Maillard Reaction Makes Everything Delicious</a></li>
-        <li><a href="https://bvnguyentriphuong.com.vn/tin-tu-cac-co-so-y-te/nuoc-ham-xuong-thanh-phan-dinh-duong-co-che-tac-dung-va-loi-ich-suc-khoe-tiem-nang">Nước hầm xương: thành phần dinh dưỡng và lợi ích sức khỏe tiềm năng</a></li>
-        <li><a href="https://danviet.vn/6-sai-lam-khi-ham-xuong-bao-sao-nuoc-xuong-ham-bi-duc-khong-thom-2022091803193049-d831637.html">Sai lầm khi hầm xương khiến nước đục</a></li>
-        <li><a href="https://hanoimoi.vn/phong-su-anh-ky-uc-thoi-bao-cap-317320.html">Ký ức thời bao cấp</a></li>
-        <li><a href="https://foodelivietnam.com/pho-trong-van-chuong-viet-nam-net-dep-am-thuc-ha-noi.html">Phở trong văn chương Việt Nam</a></li>
-      </ol>
+      <h2 id="references-title"></h2>
+      <ol id="references-list"></ol>
     </div>
   </footer>
 
   <script>
-    const profiles = {
-      north: {
-        tab: "tab-north",
-        className: "",
-        rows: [
-          ["Độ thanh", 94],
-          ["Vị ngọt tự nhiên", 68],
-          ["Độ béo", 44],
-          ["Hương quế hồi", 76],
-          ["Rau sống", 12],
-          ["Khả năng cá nhân hóa", 34]
-        ]
+    const languages = [
+      { code: "vi", label: "VN", name: "Tiếng Việt" },
+      { code: "de", label: "DE", name: "Deutsch" },
+      { code: "en", label: "EN", name: "English" },
+      { code: "fr", label: "FRA", name: "Français" },
+      { code: "es", label: "SPA", name: "Español" }
+    ];
+
+    const references = [
+      ["Phở Việt Nam - từ cội nguồn tới biểu tượng văn hóa toàn cầu", "https://vannhanso.com/blog/pho-viet-nam-tu-coi-nguon-toi-bieu-tuong-van-hoa-toan-cau"],
+      ["Vì sao có sự khác biệt rõ rệt giữa Phở miền Bắc và Phở miền Nam?", "https://www.youtube.com/watch?v=vuGA1Y9nkWM"],
+      ["Nước hầm xương vừa ngọt tự nhiên lại bổ dưỡng", "https://hellobacsi.com/an-uong-lanh-manh/thong-tin-dinh-duong/nuoc-ham-xuong/"],
+      ["Bí kíp nấu nước dùng phở ngon", "https://tintuconline.com.vn/nau-pho-kho-nhat-lam-nuoc-dung-day-la-tron-bo-bi-kip-nau-nuoc-dung-pho-ngon-ngot-nhat-454508.html"],
+      ["Phản ứng Maillard là gì", "https://www.unitedvision.com.vn/blogs/mon-a-au/phan-ung-maillard-la-gi"],
+      ["Why the Maillard Reaction Makes Everything Delicious", "https://www.youtube.com/watch?v=rs1JLYXROVU"],
+      ["Nước hầm xương: thành phần dinh dưỡng và lợi ích sức khỏe tiềm năng", "https://bvnguyentriphuong.com.vn/tin-tu-cac-co-so-y-te/nuoc-ham-xuong-thanh-phan-dinh-duong-co-che-tac-dung-va-loi-ich-suc-khoe-tiem-nang"],
+      ["Sai lầm khi hầm xương khiến nước đục", "https://danviet.vn/6-sai-lam-khi-ham-xuong-bao-sao-nuoc-xuong-ham-bi-duc-khong-thom-2022091803193049-d831637.html"],
+      ["Ký ức thời bao cấp", "https://hanoimoi.vn/phong-su-anh-ky-uc-thoi-bao-cap-317320.html"],
+      ["Phở trong văn chương Việt Nam", "https://foodelivietnam.com/pho-trong-van-chuong-viet-nam-net-dep-am-thuc-ha-noi.html"]
+    ];
+
+    const content = {
+      vi: {
+        metaTitle: "Phở Việt: Nguồn gốc và Biến tấu",
+        metaDescription: "Trang nghiên cứu trực quan về nguồn gốc, khoa học nước dùng và sự khác biệt giữa Phở Bắc và Phở Nam.",
+        navLabel: "Điều hướng nội dung",
+        languageLabel: "Chọn ngôn ngữ",
+        nav: ["Dẫn nhập", "Nguồn gốc", "Nước dùng", "Phở Bắc - Phở Nam", "Bao cấp", "Văn chương", "Tổng luận"],
+        hero: {
+          eyebrow: "Khảo cổ ẩm thực Việt Nam",
+          title: "Phở Việt: Nguồn gốc và Biến tấu",
+          copy: "Từ một món ăn đường phố của miền Bắc đầu thế kỷ 20, phở đã trở thành biểu tượng toàn cầu. Nhưng dù đi qua Nam Định, Hà Nội, Sài Gòn hay thời bao cấp, linh hồn của phở vẫn neo trong nồi nước dùng xương bò ninh lâu và bộ gia vị nền tảng.",
+          facts: [
+            ["1900", "Giai đoạn nghề phở Vân Cù, Nam Định bắt đầu định hình."],
+            ["8-10 giờ", "Thời gian ninh xương nền tảng để tạo vị ngọt, gelatin và độ sâu."],
+            ["2 trục vị", "Phở Bắc thanh tao, tối giản. Phở Nam phong phú, đậm và nhiều rau."]
+          ]
+        },
+        sections: [
+          {
+            id: "dan-nhap",
+            kicker: "1. Dẫn nhập",
+            title: "Từ đứt gãy lịch sử đến mỏ neo căn cước",
+            intro: "Phở không chỉ là món súp có bánh phở, thịt bò hoặc gà và rau thơm. Trong báo cáo gốc, phở được nhìn như một hệ sinh thái ẩm thực chứa lịch sử, sinh hóa học, địa lý, văn chương và bản sắc Việt Nam.",
+            layout: "lead",
+            proseTitle: "Một đại sứ văn hóa không chính thức",
+            paragraphs: [
+              "Từ thức quà bình dân phục vụ tầng lớp cần lao miền Bắc, phở đã vượt qua biên giới địa lý và ý thức hệ để trở thành biểu tượng văn hóa toàn cầu. Việc từ \"pho\" đi vào các từ điển tiếng Anh lớn và sự xuất hiện của nhiều quán phở trong Michelin Guide cho thấy món ăn này đã bước ra khỏi phạm vi địa phương.",
+              "Điều quan trọng hơn là phở không đứng yên. Mỗi vùng đất thêm vào một lớp thực vật, gia vị và thói quen thưởng thức riêng. Tuy vậy, báo cáo nhấn mạnh một nguyên lý bất biến: phở phải dựa trên nước dùng chiết xuất từ xương động vật qua quá trình ninh hầm kéo dài, kết hợp với tổ hợp gia vị thảo mộc nền tảng."
+            ],
+            noteTitle: "Luận điểm trung tâm",
+            note: "Rau, thịt, tương, giấm, chanh hay quẩy có thể biến đổi theo vùng miền. Cái \"gốc\" giữ định danh của phở là nước dùng xương bò ninh lâu, được làm trong, làm thơm và cân bằng bằng gừng, hành nướng, quế, hồi, thảo quả, nước mắm cùng kỹ thuật hớt bọt kiên nhẫn."
+          },
+          {
+            id: "nguon-goc",
+            kicker: "2. Khảo cổ học ẩm thực",
+            title: "Nguồn gốc phôi thai và trục Phở Bắc",
+            intro: "Báo cáo đặt phở trong bối cảnh giao thoa đầu thế kỷ 20, nhưng đồng thời phản biện các giả thuyết ngoại lai đơn giản hóa nguồn gốc món ăn.",
+            layout: "timeline",
+            cards: [
+              ["Pot-au-feu", "Giả thuyết Pháp", "Điểm giống chủ yếu là thịt bò và âm thanh \"feu\". Nhưng pot-au-feu dùng rau củ ôn đới, thịt hầm nguyên tảng và ăn với bánh mì, khác hẳn cấu trúc nước dùng kết hợp tinh bột dạng sợi của phở."],
+              ["Ngưu nhục phấn", "Giả thuyết người Hoa", "Món này có hình thức mỳ nước thịt bò, nhưng nước dùng thiên về vị thuốc Bắc với hệ gia vị phức tạp. Phở Việt tiết chế hơn, dùng bánh tráng mỏng cắt dẹt và nước mắm bản địa."],
+              ["Xáo trâu", "Gốc bản địa", "Giả thuyết được báo cáo đánh giá thuyết phục nhất: phở tiến hóa từ xáo trâu của miền Bắc. Khi thịt bò và xương bò dư ra trong thời Pháp thuộc, người bán xáo thay trâu bằng bò và tinh chỉnh gia vị."],
+              ["Nam Định - Hà Nội", "Lan tỏa và thăng hoa", "Vân Cù, Nam Định được xem là cái nôi nghề phở. Hà Nội là nơi chuẩn hóa tiêu chí nước trong, bánh dẻo, thịt thái đúng thớ và biến phở thành biểu tượng văn hóa đô thị."]
+            ]
+          },
+          {
+            id: "khoa-hoc",
+            kicker: "3. Khoa học hóa sinh",
+            title: "Nước dùng là phần hồn của phở",
+            intro: "Việc ninh xương 8-10 tiếng không chỉ là truyền thống. Dưới lăng kính khoa học thực phẩm, đó là quá trình kiểm soát mùi, chiết xuất collagen, tạo gelatin và giữ nước dùng trong.",
+            layout: "science",
+            cards: [
+              ["Phản ứng Maillard", "Gừng và hành tây được nướng xém trước khi cho vào nồi. Nhiệt độ cao làm đường và axit amin tương tác, tạo hương caramel, hương khói nhẹ và giúp trung hòa mùi ngái của mỡ bò."],
+              ["Collagen thành gelatin", "Xương ống và mô liên kết cần thời gian dài để thủy phân collagen thành gelatin. Gelatin tạo cảm giác miệng mượt, đầy và sâu, dù nước dùng không cần phải đặc như súp hầm phương Tây."],
+              ["Độ trong không phải nhạt", "Nước trong là nước không bị vẩn bởi protein kết tủa và mỡ nhũ tương hóa. Người nấu phải giữ lửa lăn tăn, hớt bọt liên tục, tránh sôi mạnh làm nước đục và vị nặng."]
+            ]
+          },
+          {
+            id: "so-sanh",
+            kicker: "4. Phân mảnh vùng miền",
+            title: "So sánh trực quan Phở Bắc và Phở Nam",
+            intro: "Ảnh đính kèm được đặt đúng tại phần đối sánh: bên trái là Phở Bắc tối giản, nước trong, ít rau sống; bên phải là Phở Nam phong phú với rau, giá, chanh, tương đen và tương đỏ.",
+            layout: "compare",
+            labels: ["Phở Bắc - bên trái", "Phở Nam - bên phải"],
+            imageAlt: "Ảnh so sánh Phở Bắc bên trái và Phở Nam bên phải với rau sống, gia vị và nước dùng khác nhau.",
+            captions: [
+              ["Phở Bắc: thanh, trong, tối giản", "Tập trung vào nước hầm xương, thịt bò thái mỏng, hành lá, hành chẻ, ngò rí. Rau sống đĩa ngoài thường không xuất hiện để giữ nhiệt và giữ vị nguyên bản."],
+              ["Phở Nam: đậm, phong phú, nhiều rau", "Nước dùng thường ngọt và béo hơn. Bàn ăn có giá, húng quế, ngò gai, rau ngổ, chanh, ớt, tương đen hoisin và tương đỏ để thực khách tự cá nhân hóa."]
+            ],
+            tableHeaders: ["Đặc trưng", "Phở Bắc", "Phở Nam"],
+            tableRows: [
+              ["Triết lý", "Tối giản, thanh tao, tôn vinh vị nguyên bản của nước hầm xương.", "Phóng khoáng, đa vị, cho phép người ăn tự điều chỉnh hương vị."],
+              ["Nước dùng", "Trong vắt, ngọt thanh từ xương bò, gia vị khô dùng tiết chế.", "Hơi đục hơn, béo hơn, vị ngọt rõ hơn nhờ đường phèn và khẩu vị miền Nam."],
+              ["Bánh phở", "Bản to, dẹt, mềm nhưng không nát.", "Sợi nhỏ hơn, thuôn dài và dai hơn, gần thói quen ăn bún, hủ tiếu miền Nam."],
+              ["Topping thịt", "Tái, chín, nạm, gầu, thái mỏng và giữ cấu trúc cổ điển.", "Đa dạng hơn, có thể có gân, sách bò, bò viên và nhiều lựa chọn khác."],
+              ["Rau ăn kèm", "Hành lá, hành tây chẻ, ngò rí. Không dùng đĩa rau sống lớn.", "Giá, húng quế, ngò gai, rau ngổ. Đĩa rau là một phần bản sắc."],
+              ["Gia vị bàn ăn", "Giấm tỏi, ớt tươi, đôi khi quẩy để tạo tương phản giòn.", "Chanh, ớt, tương đen hoisin, tương đỏ. Dấu ấn giao thoa ẩm thực Hoa - Việt."]
+            ],
+            profileTabs: ["Hồ sơ Phở Bắc", "Hồ sơ Phở Nam"],
+            profileRows: [
+              ["Độ thanh", 94, 58],
+              ["Vị ngọt tự nhiên", 68, 92],
+              ["Độ béo", 44, 78],
+              ["Hương quế hồi", 76, 54],
+              ["Rau sống", 12, 96],
+              ["Khả năng cá nhân hóa", 34, 90]
+            ]
+          },
+          {
+            id: "bao-cap",
+            kicker: "5. Dấu ấn thời bao cấp",
+            title: "\"Phở không người lái\" và sức bền của ký ức",
+            intro: "Trong giai đoạn khan hiếm trước Đổi mới 1986, dân gian gọi những bát phở có nước, bánh và hành nhưng vắng thịt là \"phở không người lái\". Cụm từ chua xót này cho thấy phở vẫn sống trong ký ức tập thể ngay cả khi nguyên liệu bị thiếu hụt.",
+            layout: "prose",
+            proseTitle: "Một bảo tàng sống của đời thường",
+            paragraphs: [
+              "Người Hà Nội thời bao cấp phải xếp hàng với tem phiếu, đôi khi dùng dép hoặc gạch để giữ chỗ. Bát phở mậu dịch thiếu thịt nhưng vẫn cố giữ mùi quế hồi và vị xương hầm, như một cách níu lại nếp sống thị dân thanh lịch trong thiếu thốn.",
+              "Thông điệp của phần này không phải thi vị hóa nghèo khó. Nó nhắc rằng phần cốt lõi của phở - nước dùng xương và ký ức cộng đồng - đủ mạnh để tồn tại qua biến động kinh tế, chiến tranh và đứt gãy xã hội."
+            ]
+          },
+          {
+            id: "van-chuong",
+            kicker: "6. Phở trong văn chương",
+            title: "Khi một bát phở trở thành ngôn ngữ ký ức",
+            intro: "Những cây bút lớn đã biến phở từ món ăn đường phố thành đối tượng mỹ học, xã hội học và căn tính dân tộc.",
+            layout: "quotes",
+            quotes: [
+              ["Nguyễn Tuân xem phở là một món quà cổ điển giàu khí chất dân tộc, đồng thời tạo ra một lớp từ vựng sành ăn như \"quả thăn\", \"mũ phở\" và thú ăn \"xẩu\".", "Nguyễn Tuân"],
+              ["Thạch Lam chuẩn hóa tiêu chí bát phở ngon: nước dùng trong và ngọt, bánh dẻo không nát, thịt mỡ gầu giòn, chanh ớt và hành tây đủ vị.", "Thạch Lam"],
+              ["Vũ Bằng viết về phở như bản đồ ký ức của người xa xứ, nơi vị ngọt tự nhiên của nước dùng không thể bị thay thế bằng chất hóa học.", "Vũ Bằng"]
+            ]
+          },
+          {
+            id: "tong-luan",
+            kicker: "7. Tổng luận",
+            title: "Tính thống nhất trong đa dạng",
+            intro: "Phở Bắc, Phở Nam hay phở thời bao cấp đều là các biến thiên bề mặt của cùng một hệ gen ẩm thực. Thịt, rau, tương và thói quen ăn kèm có thể đổi thay; nước dùng xương bò ninh lâu, gừng hành nướng và bộ gia vị nền tảng vẫn là phần hồn.",
+            layout: "prose",
+            proseTitle: "Hệ gen ẩm thực của phở",
+            paragraphs: [
+              "Báo cáo kết luận rằng phở là một thực thể sống động, vừa có nền tảng khoa học sinh hóa, vừa có chiều sâu văn hóa. Sự khác biệt vùng miền không phá vỡ định nghĩa của phở; trái lại, nó chứng minh khả năng thích nghi của món ăn khi đi qua khí hậu, lịch sử và cộng đồng khác nhau.",
+              "Vì vậy, cuộc viễn chinh toàn cầu của phở trong thế kỷ 21 dù có thêm nhiều biến tấu vẫn không nên tách khỏi cái gốc: nồi nước dùng xương ống ninh 8-10 tiếng, được làm thơm bằng phản ứng Maillard của gừng hành nướng, được giữ trong bằng kỹ thuật lửa nhỏ và hớt bọt, rồi hoàn thiện bằng văn hóa thưởng thức Việt Nam."
+            ]
+          }
+        ],
+        referencesTitle: "Nguồn tham khảo trong PDF",
+        profileUnit: "/100"
       },
-      south: {
-        tab: "tab-south",
-        className: "bar--south",
-        rows: [
-          ["Độ thanh", 58],
-          ["Vị ngọt rõ", 92],
-          ["Độ béo", 78],
-          ["Hương quế hồi", 54],
-          ["Rau sống", 96],
-          ["Khả năng cá nhân hóa", 90]
-        ]
+      de: {
+        metaTitle: "Vietnamesische Phở: Ursprung und Varianten",
+        metaDescription: "Eine visuelle Studie über Ursprung, Brühenwissenschaft und den Unterschied zwischen nord- und südvietnamesischer Phở.",
+        navLabel: "Inhaltsnavigation",
+        languageLabel: "Sprache wählen",
+        nav: ["Einführung", "Ursprung", "Brühe", "Nord - Süd", "Planwirtschaft", "Literatur", "Fazit"],
+        hero: {
+          eyebrow: "Kulinarische Archäologie Vietnams",
+          title: "Phở Việt: Ursprung und Varianten",
+          copy: "Aus einem Straßenessen Nordvietnams zu Beginn des 20. Jahrhunderts wurde Phở ein globales Symbol. Ob in Nam Định, Hanoi, Saigon oder in der Zeit der Planwirtschaft: Ihre Seele bleibt in der lange gekochten Rinderknochenbrühe und den grundlegenden Gewürzen verankert.",
+          facts: [
+            ["1900", "Die Phase, in der das Phở-Handwerk von Vân Cù in Nam Định Gestalt annahm."],
+            ["8-10 Stunden", "Die grundlegende Kochzeit für Knochen, Süße, Gelatine und Tiefe."],
+            ["2 Geschmacksachsen", "Phở Bắc ist klar und reduziert. Phở Nam ist üppig, kräftig und kräuterreich."]
+          ]
+        },
+        sections: [
+          {
+            id: "dan-nhap",
+            kicker: "1. Einführung",
+            title: "Von historischen Brüchen zu einem Anker kultureller Identität",
+            intro: "Phở ist mehr als eine Suppe aus Reisnudeln, Rind oder Huhn und Kräutern. Der Bericht versteht sie als kulinarisches Ökosystem aus Geschichte, Biochemie, Geografie, Literatur und vietnamesischer Identität.",
+            layout: "lead",
+            proseTitle: "Ein inoffizieller Kulturbotschafter",
+            paragraphs: [
+              "Vom einfachen Gericht für Arbeiter im Norden wurde Phở zu einem globalen Kultursymbol. Dass \"pho\" in große englische Wörterbücher aufgenommen wurde und viele Phở-Lokale im Michelin Guide erscheinen, zeigt ihren Weg über lokale Grenzen hinaus.",
+              "Noch wichtiger ist: Phở bleibt nicht statisch. Jede Region fügt Pflanzen, Gewürze und eigene Essgewohnheiten hinzu. Der Bericht betont dennoch ein unveränderliches Prinzip: Phở beruht auf einer lange gekochten Brühe aus Tierknochen und einem Kern aromatischer Gewürze."
+            ],
+            noteTitle: "Zentrale These",
+            note: "Kräuter, Fleisch, Saucen, Essig, Limette oder frittierte Teigstangen können sich regional verändern. Der Kern, der Phở definiert, ist die lange gekochte Rinderknochenbrühe, geklärt, aromatisiert und ausbalanciert mit geröstetem Ingwer und Zwiebeln, Zimt, Sternanis, Kardamom, Fischsauce und geduldigem Abschäumen."
+          },
+          {
+            id: "nguon-goc",
+            kicker: "2. Kulinarische Archäologie",
+            title: "Die Entstehung und die nördliche Achse der Phở",
+            intro: "Der Bericht verortet Phở in den kulturellen Austauschprozessen des frühen 20. Jahrhunderts und widerspricht zugleich vereinfachten ausländischen Ursprungsthesen.",
+            layout: "timeline",
+            cards: [
+              ["Pot-au-feu", "Französische These", "Die wichtigste Gemeinsamkeit ist Rindfleisch und die Lautnähe zu \"feu\". Pot-au-feu nutzt jedoch Gemüse aus gemäßigten Klimazonen, ganze Schmorstücke und Brot, während Phở eine Brühe mit Reisnudeln verbindet."],
+              ["Ngưu nhục phấn", "Chinesische These", "Das Gericht ähnelt einer Rindernudelsuppe, doch die Brühe ist stark von chinesischen Heilkräutern geprägt. Vietnamesische Phở ist reduzierter, nutzt flach geschnittene Reisnudeln und einheimische Fischsauce."],
+              ["Xáo trâu", "Einheimische Wurzel", "Die überzeugendste These des Berichts sieht Phở als Weiterentwicklung von nordvietnamesischem Büffelfleischeintopf. Als Rindfleisch und Rinderknochen in der Kolonialzeit verfügbarer wurden, ersetzten Händler Büffel durch Rind und verfeinerten die Gewürze."],
+              ["Nam Định - Hanoi", "Ausbreitung und Veredelung", "Vân Cù in Nam Định gilt als Wiege des Phở-Handwerks. Hanoi standardisierte klare Brühe, elastische Nudeln und präzise geschnittenes Fleisch und machte Phở zum urbanen Kultursymbol."]
+            ]
+          },
+          {
+            id: "khoa-hoc",
+            kicker: "3. Biochemie",
+            title: "Die Brühe ist die Seele der Phở",
+            intro: "Knochen 8-10 Stunden zu kochen ist nicht nur Tradition. Lebensmittelwissenschaftlich geht es um Geruchskontrolle, Kollagenextraktion, Gelatinebildung und klare Brühe.",
+            layout: "science",
+            cards: [
+              ["Maillard-Reaktion", "Ingwer und Zwiebeln werden angeröstet, bevor sie in den Topf kommen. Hohe Hitze lässt Zucker und Aminosäuren reagieren, erzeugt Karamell- und Röstaromen und mildert den kräftigen Geruch von Rinderfett."],
+              ["Kollagen wird Gelatine", "Röhrenknochen und Bindegewebe brauchen lange Hitze, damit Kollagen zu Gelatine zerfällt. Das gibt der Brühe ein rundes, seidiges Mundgefühl, ohne sie dick wie einen westlichen Eintopf zu machen."],
+              ["Klar heißt nicht dünn", "Klare Brühe enthält keine schwebenden Eiweißflocken und kein emulgiertes Fett. Deshalb köchelt sie nur sanft, wird ständig abgeschäumt und darf nicht stark sprudelnd kochen."]
+            ]
+          },
+          {
+            id: "so-sanh",
+            kicker: "4. Regionale Ausprägung",
+            title: "Visueller Vergleich: Phở Bắc und Phở Nam",
+            intro: "Das Bild steht genau im Vergleichsteil: links die reduzierte nordvietnamesische Phở mit klarer Brühe und wenig Rohkräutern, rechts die üppige südvietnamesische Phở mit Kräutern, Sprossen, Limette, Hoisin und Chilisauce.",
+            layout: "compare",
+            labels: ["Phở Bắc - links", "Phở Nam - rechts"],
+            imageAlt: "Vergleichsbild: links Phở Bắc, rechts Phở Nam mit Kräutern, Würzsaucen und unterschiedlicher Brühe.",
+            captions: [
+              ["Phở Bắc: klar, fein, reduziert", "Im Zentrum stehen Knochenbrühe, dünn geschnittenes Rindfleisch, Frühlingszwiebeln, gespaltene Zwiebeln und Koriander. Ein großer Teller Rohkräuter fehlt meist, damit Hitze und Originalgeschmack erhalten bleiben."],
+              ["Phở Nam: kräftig, üppig, kräuterreich", "Die Brühe ist oft süßer und fetter. Auf dem Tisch stehen Sprossen, Thai-Basilikum, langer Koriander, Reisfeldkraut, Limette, Chili, Hoisin und rote Chilisauce zur individuellen Abstimmung."]
+            ],
+            tableHeaders: ["Merkmal", "Phở Bắc", "Phở Nam"],
+            tableRows: [
+              ["Philosophie", "Reduziert, klar, auf den ursprünglichen Geschmack der Knochenbrühe ausgerichtet.", "Offen, vielschichtig, mit großer Freiheit zur persönlichen Würzung."],
+              ["Brühe", "Glasklar, natürlich süß aus Rinderknochen, trockene Gewürze sparsam eingesetzt.", "Etwas trüber, fetter und deutlich süßer, oft durch Kandiszucker und südliche Vorlieben geprägt."],
+              ["Reisnudeln", "Breiter, flacher, weich, aber nicht zerfallend.", "Schmaler, länglicher und bissfester, näher an südlichen Nudelgewohnheiten."],
+              ["Fleisch", "Roh, gegart, Brust, Fettbrust, dünn geschnitten und klassisch gehalten.", "Vielfältiger, oft mit Sehne, Blättermagen, Rindfleischbällchen und weiteren Optionen."],
+              ["Kräuter", "Frühlingszwiebel, gespaltene Zwiebel, Koriander. Kein großer Rohkräuterteller.", "Sprossen, Thai-Basilikum, langer Koriander, Reisfeldkraut. Der Kräuterteller ist Teil der Identität."],
+              ["Tischgewürze", "Knoblauchessig, frische Chili, manchmal knusprige Teigstangen.", "Limette, Chili, Hoisin, rote Chilisauce. Ein klares Zeichen chinesisch-vietnamesischer Vermischung."]
+            ],
+            profileTabs: ["Profil Phở Bắc", "Profil Phở Nam"],
+            profileRows: [
+              ["Klarheit", 94, 58],
+              ["Natürliche Süße", 68, 92],
+              ["Fettigkeit", 44, 78],
+              ["Zimt- und Anisaroma", 76, 54],
+              ["Rohkräuter", 12, 96],
+              ["Individualisierung", 34, 90]
+            ]
+          },
+          {
+            id: "bao-cap",
+            kicker: "5. Erinnerung an die Planwirtschaft",
+            title: "\"Phở ohne Piloten\" und die Widerstandskraft der Erinnerung",
+            intro: "In der Mangelzeit vor der Wirtschaftsreform von 1986 nannte man Schalen mit Brühe, Nudeln und Zwiebeln, aber ohne Fleisch, scherzhaft bitter \"Phở ohne Piloten\". Der Ausdruck zeigt, dass Phở selbst bei fehlenden Zutaten im kollektiven Gedächtnis weiterlebte.",
+            layout: "prose",
+            proseTitle: "Ein lebendiges Museum des Alltags",
+            paragraphs: [
+              "In Hanoi standen Menschen mit Lebensmittelmarken an und reservierten ihren Platz manchmal mit Sandalen oder Ziegelsteinen. Die Phở der staatlichen Kantinen hatte kaum Fleisch, bewahrte aber Zimt, Sternanis und Knochenaroma als Erinnerung an städtische Esskultur.",
+              "Diese Passage romantisiert Armut nicht. Sie zeigt, dass der Kern der Phở - Knochenbrühe und gemeinsames Gedächtnis - stark genug war, wirtschaftliche Not, Krieg und gesellschaftliche Brüche zu überstehen."
+            ]
+          },
+          {
+            id: "van-chuong",
+            kicker: "6. Phở in der Literatur",
+            title: "Wenn eine Schale Phở zur Sprache der Erinnerung wird",
+            intro: "Große Autoren machten aus einem Straßengericht ein Objekt von Ästhetik, Sozialbeobachtung und nationaler Identität.",
+            layout: "quotes",
+            quotes: [
+              ["Nguyễn Tuân sah Phở als klassisches Geschenk von nationalem Charakter und schuf eine Feinschmeckersprache für Zuschnitte, Knochenstücke und Trinkkultur.", "Nguyễn Tuân"],
+              ["Thạch Lam formulierte Kriterien für gute Phở: klare und süße Brühe, elastische Nudeln, knuspriges Fettbrustfleisch, dazu Limette, Chili und Zwiebel.", "Thạch Lam"],
+              ["Vũ Bằng schrieb über Phở als Erinnerungslandkarte des Exilierten, in der natürliche Süße der Brühe niemals durch Chemie ersetzt werden kann.", "Vũ Bằng"]
+            ]
+          },
+          {
+            id: "tong-luan",
+            kicker: "7. Fazit",
+            title: "Einheit in Vielfalt",
+            intro: "Phở Bắc, Phở Nam und Phở der Planwirtschaft sind Oberflächenvarianten desselben kulinarischen Genoms. Fleisch, Kräuter, Saucen und Essgewohnheiten ändern sich; lange gekochte Knochenbrühe, gerösteter Ingwer und Zwiebel sowie die Grundgewürze bleiben die Seele.",
+            layout: "prose",
+            proseTitle: "Das kulinarische Genom der Phở",
+            paragraphs: [
+              "Der Bericht kommt zu dem Schluss, dass Phở ein lebendiger Organismus ist: biochemisch fundiert und kulturell tief verankert. Regionale Unterschiede zerstören die Definition nicht, sondern beweisen ihre Anpassungsfähigkeit an Klima, Geschichte und Gemeinschaft.",
+              "Darum sollte die globale Reise der Phở im 21. Jahrhundert trotz neuer Varianten nicht vom Ursprung getrennt werden: 8-10 Stunden gekochte Röhrenknochen, Aroma aus der Maillard-Reaktion gerösteter Zwiebeln und Ingwer, sanfte Hitze, geduldiges Abschäumen und die vietnamesische Kunst des Essens."
+            ]
+          }
+        ],
+        referencesTitle: "Quellen aus dem PDF",
+        profileUnit: "/100"
+      },
+      en: {
+        metaTitle: "Vietnamese Phở: Origins and Variations",
+        metaDescription: "A visual study of phở origins, broth science, and the difference between northern and southern Vietnamese phở.",
+        navLabel: "Content navigation",
+        languageLabel: "Choose language",
+        nav: ["Introduction", "Origins", "Broth", "North - South", "Subsidy era", "Literature", "Conclusion"],
+        hero: {
+          eyebrow: "Vietnamese culinary archaeology",
+          title: "Phở Việt: Origins and Variations",
+          copy: "From a northern Vietnamese street food of the early 20th century, phở became a global symbol. Across Nam Định, Hanoi, Saigon, and even the subsidy era, its soul remains anchored in long-simmered beef bone broth and a foundational spice system.",
+          facts: [
+            ["1900", "The period when the Phở craft of Vân Cù, Nam Định began to take shape."],
+            ["8-10 hours", "The core simmering time that creates sweetness, gelatin, and depth."],
+            ["2 flavor axes", "Phở Bắc is clear and restrained. Phở Nam is abundant, richer, and herb-forward."]
+          ]
+        },
+        sections: [
+          {
+            id: "dan-nhap",
+            kicker: "1. Introduction",
+            title: "From historical rupture to an anchor of identity",
+            intro: "Phở is not merely a soup with rice noodles, beef or chicken, and herbs. The source report treats it as a culinary ecosystem that carries history, biochemistry, geography, literature, and Vietnamese identity.",
+            layout: "lead",
+            proseTitle: "An unofficial cultural ambassador",
+            paragraphs: [
+              "From a modest dish serving northern laborers, phở crossed geographic and ideological borders to become a global cultural symbol. The word \"pho\" entering major English dictionaries and the appearance of phở restaurants in the Michelin Guide show how far it has traveled.",
+              "More importantly, phở is not static. Each region adds its own layer of plants, seasonings, and eating habits. Still, the report highlights one constant principle: phở rests on long-extracted animal bone broth and a foundational aromatic spice set."
+            ],
+            noteTitle: "Central thesis",
+            note: "Herbs, meat, sauces, vinegar, lime, or fried dough sticks may change by region. The root that preserves phở's identity is long-simmered beef bone broth, clarified, perfumed, and balanced with roasted ginger and onion, cinnamon, star anise, cardamom, fish sauce, and patient skimming."
+          },
+          {
+            id: "nguon-goc",
+            kicker: "2. Culinary archaeology",
+            title: "Early origins and the northern Phở axis",
+            intro: "The report places phở in the cultural exchanges of the early 20th century while also challenging simplified foreign-origin theories.",
+            layout: "timeline",
+            cards: [
+              ["Pot-au-feu", "French-origin theory", "The main similarity is beef and the sound of \"feu\". But pot-au-feu uses temperate vegetables, whole stewed cuts, and bread, unlike phở's broth-and-rice-noodle structure."],
+              ["Ngưu nhục phấn", "Chinese-origin theory", "This dish resembles a beef noodle soup, yet its broth leans heavily on Chinese medicinal herbs. Vietnamese phở is more restrained, uses flat rice sheets cut into noodles, and relies on local fish sauce."],
+              ["Xáo trâu", "Local root", "The report finds this the most persuasive theory: phở evolved from northern buffalo stew. When beef and beef bones became more available under French colonial rule, vendors replaced buffalo with beef and adjusted the spices."],
+              ["Nam Định - Hanoi", "Spread and refinement", "Vân Cù in Nam Định is treated as the cradle of phở craft. Hanoi standardized clear broth, supple noodles, precise meat slicing, and turned phở into an urban cultural symbol."]
+            ]
+          },
+          {
+            id: "khoa-hoc",
+            kicker: "3. Biochemistry",
+            title: "The broth is the soul of phở",
+            intro: "Simmering bones for 8-10 hours is not just tradition. Through food science, it controls aroma, extracts collagen, creates gelatin, and keeps the broth clear.",
+            layout: "science",
+            cards: [
+              ["Maillard reaction", "Ginger and onion are charred before entering the pot. High heat lets sugars and amino acids react, creating caramel and roasted aromas while softening the heavy smell of beef fat."],
+              ["Collagen into gelatin", "Marrow bones and connective tissue need long heat for collagen to break into gelatin. This gives the broth a smooth, full mouthfeel without making it thick like a Western stew."],
+              ["Clear is not thin", "Clear broth means no suspended coagulated protein and no emulsified fat. The cook keeps the pot at a gentle simmer, skims constantly, and avoids a hard boil that clouds and weighs down the broth."]
+            ]
+          },
+          {
+            id: "so-sanh",
+            kicker: "4. Regional divergence",
+            title: "Visual comparison: Phở Bắc and Phở Nam",
+            intro: "The attached image sits exactly in the comparison section: the left side shows minimalist northern phở with clear broth and few raw herbs; the right side shows abundant southern phở with herbs, sprouts, lime, hoisin, and chili sauce.",
+            layout: "compare",
+            labels: ["Phở Bắc - left", "Phở Nam - right"],
+            imageAlt: "Comparison image: Phở Bắc on the left and Phở Nam on the right with herbs, condiments, and different broth styles.",
+            captions: [
+              ["Phở Bắc: clear, elegant, restrained", "The focus is bone broth, thinly sliced beef, scallions, split onion, and cilantro. A large side plate of raw herbs is usually absent to preserve heat and the original flavor."],
+              ["Phở Nam: rich, abundant, herb-forward", "The broth is often sweeter and fattier. The table brings sprouts, Thai basil, culantro, rice paddy herb, lime, chili, hoisin, and red chili sauce so diners can personalize the bowl."]
+            ],
+            tableHeaders: ["Feature", "Phở Bắc", "Phở Nam"],
+            tableRows: [
+              ["Philosophy", "Minimalist, elegant, centered on the original flavor of bone broth.", "Open, layered, and highly customizable by the diner."],
+              ["Broth", "Crystal clear, naturally sweet from beef bones, with dry spices used sparingly.", "Slightly cloudier, fattier, and more distinctly sweet from rock sugar and southern taste."],
+              ["Rice noodles", "Wide, flat, soft, yet not mushy.", "Narrower, longer, and chewier, closer to southern noodle habits."],
+              ["Meat toppings", "Rare, cooked, brisket, fatty brisket, thinly sliced, and classical.", "More varied, often including tendon, tripe, beef balls, and additional choices."],
+              ["Herbs", "Scallion, split onion, cilantro. No large raw herb plate.", "Sprouts, Thai basil, culantro, rice paddy herb. The herb plate is part of its identity."],
+              ["Table condiments", "Garlic vinegar, fresh chili, sometimes fried dough sticks for crunch.", "Lime, chili, hoisin, red chili sauce. A clear mark of Chinese-Vietnamese culinary exchange."]
+            ],
+            profileTabs: ["Phở Bắc profile", "Phở Nam profile"],
+            profileRows: [
+              ["Clarity", 94, 58],
+              ["Natural sweetness", 68, 92],
+              ["Fat richness", 44, 78],
+              ["Cinnamon and anise aroma", 76, 54],
+              ["Raw herbs", 12, 96],
+              ["Customization", 34, 90]
+            ]
+          },
+          {
+            id: "bao-cap",
+            kicker: "5. Subsidy-era memory",
+            title: "\"Phở without a pilot\" and the endurance of memory",
+            intro: "During the scarcity before the 1986 Đổi mới reforms, people jokingly called bowls with broth, noodles, and onion but no meat \"phở without a pilot\". The bitter phrase shows that phở stayed alive in collective memory even when ingredients were missing.",
+            layout: "prose",
+            proseTitle: "A living museum of everyday life",
+            paragraphs: [
+              "In subsidy-era Hanoi, people queued with ration coupons and sometimes used sandals or bricks to hold their place. State-canteen phở lacked meat but tried to preserve cinnamon, star anise, and bone flavor as a trace of urban food culture.",
+              "This section does not romanticize poverty. It shows that the core of phở - bone broth and communal memory - was strong enough to survive economic scarcity, war, and social rupture."
+            ]
+          },
+          {
+            id: "van-chuong",
+            kicker: "6. Phở in literature",
+            title: "When a bowl of phở becomes a language of memory",
+            intro: "Major writers transformed phở from a street food into an object of aesthetics, social observation, and national identity.",
+            layout: "quotes",
+            quotes: [
+              ["Nguyễn Tuân saw phở as a classic gift with national character and built a connoisseur's vocabulary around cuts of beef, bones, and drinking culture.", "Nguyễn Tuân"],
+              ["Thạch Lam defined the criteria of a good bowl: clear and sweet broth, supple noodles, crisp fatty brisket, with lime, chili, and onion in balance.", "Thạch Lam"],
+              ["Vũ Bằng wrote of phở as a memory map for the displaced, where the natural sweetness of broth can never be replaced by chemicals.", "Vũ Bằng"]
+            ]
+          },
+          {
+            id: "tong-luan",
+            kicker: "7. Conclusion",
+            title: "Unity within diversity",
+            intro: "Phở Bắc, Phở Nam, and subsidy-era phở are surface variations of one culinary genome. Meat, herbs, sauces, and eating habits may change; long-simmered bone broth, roasted ginger and onion, and the core spice set remain the soul.",
+            layout: "prose",
+            proseTitle: "The culinary genome of phở",
+            paragraphs: [
+              "The report concludes that phở is a living entity with both biochemical grounding and cultural depth. Regional differences do not break its definition; instead, they prove its ability to adapt to climate, history, and community.",
+              "Therefore, the global journey of phở in the 21st century should not detach it from its origin: marrow bones simmered for 8-10 hours, aroma built through the Maillard reaction of roasted onion and ginger, gentle heat, patient skimming, and the Vietnamese culture of eating."
+            ]
+          }
+        ],
+        referencesTitle: "References from the PDF",
+        profileUnit: "/100"
+      },
+      fr: {
+        metaTitle: "Phở vietnamien : origines et variations",
+        metaDescription: "Une étude visuelle sur les origines du phở, la science du bouillon et la différence entre Phở Bắc et Phở Nam.",
+        navLabel: "Navigation du contenu",
+        languageLabel: "Choisir la langue",
+        nav: ["Introduction", "Origines", "Bouillon", "Nord - Sud", "Période de pénurie", "Littérature", "Conclusion"],
+        hero: {
+          eyebrow: "Archéologie culinaire du Vietnam",
+          title: "Phở Việt : origines et variations",
+          copy: "Né comme plat de rue dans le Nord du Vietnam au début du XXe siècle, le phở est devenu un symbole mondial. De Nam Định à Hanoï, de Saïgon à la période de pénurie, son âme reste ancrée dans un bouillon d'os de bœuf longuement mijoté et un socle d'épices.",
+          facts: [
+            ["1900", "Période où le métier du phở de Vân Cù, à Nam Định, commence à se structurer."],
+            ["8-10 heures", "Temps de mijotage central pour obtenir douceur, gélatine et profondeur."],
+            ["2 axes de goût", "Le Phở Bắc est clair et minimal. Le Phở Nam est généreux, plus intense et riche en herbes."]
+          ]
+        },
+        sections: [
+          {
+            id: "dan-nhap",
+            kicker: "1. Introduction",
+            title: "Des ruptures historiques à un ancrage identitaire",
+            intro: "Le phở n'est pas seulement une soupe de nouilles de riz avec bœuf ou poulet et herbes. Le rapport source le présente comme un écosystème culinaire portant histoire, biochimie, géographie, littérature et identité vietnamienne.",
+            layout: "lead",
+            proseTitle: "Un ambassadeur culturel non officiel",
+            paragraphs: [
+              "D'un plat populaire destiné aux travailleurs du Nord, le phở a franchi les frontières géographiques et idéologiques pour devenir un symbole culturel mondial. L'entrée du mot \"pho\" dans de grands dictionnaires anglais et la présence de restaurants de phở dans le Guide Michelin en témoignent.",
+              "Plus important encore, le phở n'est pas figé. Chaque région y ajoute ses plantes, ses assaisonnements et ses habitudes. Pourtant, le rapport insiste sur un principe constant : le phở repose sur un bouillon d'os longuement extrait et sur un noyau d'épices aromatiques."
+            ],
+            noteTitle: "Thèse centrale",
+            note: "Les herbes, les viandes, les sauces, le vinaigre, le citron vert ou les beignets peuvent varier selon les régions. La racine qui préserve l'identité du phở est le bouillon d'os de bœuf longuement mijoté, clarifié, parfumé et équilibré par gingembre et oignon grillés, cannelle, badiane, cardamome, nuoc-mâm et écumage patient."
+          },
+          {
+            id: "nguon-goc",
+            kicker: "2. Archéologie culinaire",
+            title: "Origines embryonnaires et axe nord du phở",
+            intro: "Le rapport place le phở dans les échanges culturels du début du XXe siècle tout en contestant les théories étrangères trop simplificatrices.",
+            layout: "timeline",
+            cards: [
+              ["Pot-au-feu", "Hypothèse française", "La ressemblance principale tient au bœuf et à la sonorité de \"feu\". Mais le pot-au-feu utilise légumes tempérés, morceaux entiers et pain, à l'opposé de la structure bouillon et nouilles du phở."],
+              ["Ngưu nhục phấn", "Hypothèse chinoise", "Ce plat ressemble à une soupe de nouilles au bœuf, mais son bouillon est dominé par des herbes médicinales chinoises. Le phở vietnamien est plus retenu, avec nouilles plates et nuoc-mâm local."],
+              ["Xáo trâu", "Racine locale", "Le rapport juge cette hypothèse la plus convaincante : le phở évoluerait du ragoût de buffle du Nord. Quand le bœuf et ses os deviennent plus disponibles sous la colonisation française, les vendeurs remplacent le buffle et ajustent les épices."],
+              ["Nam Định - Hanoï", "Diffusion et raffinement", "Vân Cù, à Nam Định, est considéré comme le berceau du métier. Hanoï fixe les critères du bouillon clair, des nouilles souples et de la coupe de viande, puis transforme le phở en symbole urbain."]
+            ]
+          },
+          {
+            id: "khoa-hoc",
+            kicker: "3. Biochimie",
+            title: "Le bouillon est l'âme du phở",
+            intro: "Faire mijoter les os pendant 8-10 heures n'est pas seulement une tradition. C'est un processus de contrôle des odeurs, d'extraction du collagène, de création de gélatine et de clarification.",
+            layout: "science",
+            cards: [
+              ["Réaction de Maillard", "Le gingembre et l'oignon sont grillés avant d'entrer dans la marmite. La chaleur fait réagir sucres et acides aminés, crée des notes caramélisées et grillées, et adoucit l'odeur du gras de bœuf."],
+              ["Du collagène à la gélatine", "Les os à moelle et les tissus conjonctifs demandent une cuisson longue pour transformer le collagène en gélatine. Celle-ci donne au bouillon une texture ronde et soyeuse sans l'épaissir comme un ragoût occidental."],
+              ["Clair ne veut pas dire faible", "Un bouillon clair ne contient ni protéines coagulées en suspension ni graisse émulsionnée. Il faut une ébullition douce, un écumage constant et éviter les gros bouillons qui troublent la soupe."]
+            ]
+          },
+          {
+            id: "so-sanh",
+            kicker: "4. Divergence régionale",
+            title: "Comparaison visuelle : Phở Bắc et Phở Nam",
+            intro: "L'image est placée dans la section de comparaison : à gauche, le Phở Bắc minimaliste au bouillon clair; à droite, le Phở Nam généreux avec herbes, germes, citron vert, hoisin et sauce pimentée.",
+            layout: "compare",
+            labels: ["Phở Bắc - gauche", "Phở Nam - droite"],
+            imageAlt: "Image comparative : Phở Bắc à gauche et Phở Nam à droite avec herbes, condiments et bouillons différents.",
+            captions: [
+              ["Phở Bắc : clair, élégant, minimal", "L'accent porte sur le bouillon d'os, le bœuf finement tranché, la ciboule, l'oignon fendu et la coriandre. Le grand plateau d'herbes crues est généralement absent pour préserver chaleur et goût originel."],
+              ["Phở Nam : riche, généreux, herbacé", "Le bouillon est souvent plus sucré et plus gras. À table arrivent germes, basilic thaï, coriandre longue, rau ôm, citron vert, piment, hoisin et sauce rouge pour personnaliser le bol."]
+            ],
+            tableHeaders: ["Caractéristique", "Phở Bắc", "Phở Nam"],
+            tableRows: [
+              ["Philosophie", "Minimaliste, élégante, centrée sur le goût originel du bouillon d'os.", "Ouverte, complexe, laissant au mangeur une grande liberté d'assaisonnement."],
+              ["Bouillon", "Très clair, douceur naturelle des os de bœuf, épices sèches utilisées avec retenue.", "Un peu plus trouble, plus gras et plus sucré, marqué par le sucre candi et le goût du Sud."],
+              ["Nouilles de riz", "Larges, plates, tendres sans se défaire.", "Plus fines, plus longues et plus fermes, proches des habitudes de nouilles du Sud."],
+              ["Viandes", "Bœuf cru, cuit, poitrine, poitrine grasse, finement tranchés et classiques.", "Plus variées, avec tendon, tripes, boulettes de bœuf et autres choix."],
+              ["Herbes", "Ciboule, oignon fendu, coriandre. Pas de grand plateau d'herbes crues.", "Germes, basilic thaï, coriandre longue, rau ôm. Le plateau d'herbes fait partie de l'identité."],
+              ["Condiments", "Vinaigre à l'ail, piment frais, parfois beignets croustillants.", "Citron vert, piment, hoisin, sauce rouge. Marque nette d'un échange sino-vietnamien."]
+            ],
+            profileTabs: ["Profil Phở Bắc", "Profil Phở Nam"],
+            profileRows: [
+              ["Clarté", 94, 58],
+              ["Douceur naturelle", 68, 92],
+              ["Richesse grasse", 44, 78],
+              ["Arôme cannelle et anis", 76, 54],
+              ["Herbes crues", 12, 96],
+              ["Personnalisation", 34, 90]
+            ]
+          },
+          {
+            id: "bao-cap",
+            kicker: "5. Mémoire de la période de pénurie",
+            title: "\"Phở sans pilote\" et résistance de la mémoire",
+            intro: "Dans la pénurie précédant les réformes Đổi mới de 1986, on appelait amèrement \"phở sans pilote\" les bols avec bouillon, nouilles et oignon mais sans viande. L'expression montre que le phở survivait dans la mémoire collective malgré le manque.",
+            layout: "prose",
+            proseTitle: "Un musée vivant du quotidien",
+            paragraphs: [
+              "À Hanoï, on faisait la queue avec des tickets de rationnement, parfois en gardant sa place avec une sandale ou une brique. Le phở des cantines d'État manquait de viande mais conservait cannelle, badiane et saveur d'os comme trace d'une culture urbaine.",
+              "Cette partie ne romantise pas la pauvreté. Elle rappelle que le cœur du phở - bouillon d'os et mémoire commune - a survécu aux pénuries, à la guerre et aux ruptures sociales."
+            ]
+          },
+          {
+            id: "van-chuong",
+            kicker: "6. Le phở dans la littérature",
+            title: "Quand un bol de phở devient langue de la mémoire",
+            intro: "De grands écrivains ont transformé un plat de rue en objet esthétique, social et identitaire.",
+            layout: "quotes",
+            quotes: [
+              ["Nguyễn Tuân voyait le phở comme un cadeau classique au caractère national et a créé un vocabulaire de connaisseur autour des morceaux, des os et de l'art de boire.", "Nguyễn Tuân"],
+              ["Thạch Lam a défini le bon bol : bouillon clair et doux, nouilles souples, poitrine grasse croquante, citron, piment et oignon en équilibre.", "Thạch Lam"],
+              ["Vũ Bằng a écrit le phở comme une carte de mémoire de l'exilé, où la douceur naturelle du bouillon ne peut être remplacée par aucune chimie.", "Vũ Bằng"]
+            ]
+          },
+          {
+            id: "tong-luan",
+            kicker: "7. Conclusion",
+            title: "L'unité dans la diversité",
+            intro: "Phở Bắc, Phở Nam et phở de la période de pénurie sont des variations de surface du même génome culinaire. Viande, herbes, sauces et habitudes changent; bouillon d'os longuement mijoté, gingembre et oignon grillés, et épices de base demeurent l'âme.",
+            layout: "prose",
+            proseTitle: "Le génome culinaire du phở",
+            paragraphs: [
+              "Le rapport conclut que le phở est une entité vivante, fondée sur la biochimie et chargée de profondeur culturelle. Les différences régionales ne détruisent pas sa définition; elles prouvent sa capacité d'adaptation au climat, à l'histoire et aux communautés.",
+              "Ainsi, le voyage mondial du phở au XXIe siècle ne devrait pas l'éloigner de sa source : os à moelle mijotés 8-10 heures, arômes issus de la réaction de Maillard du gingembre et de l'oignon grillés, feu doux, écumage patient et culture vietnamienne de la dégustation."
+            ]
+          }
+        ],
+        referencesTitle: "Sources du PDF",
+        profileUnit: "/100"
+      },
+      es: {
+        metaTitle: "Phở vietnamita: orígenes y variaciones",
+        metaDescription: "Un estudio visual sobre los orígenes del phở, la ciencia del caldo y la diferencia entre Phở Bắc y Phở Nam.",
+        navLabel: "Navegación del contenido",
+        languageLabel: "Elegir idioma",
+        nav: ["Introducción", "Orígenes", "Caldo", "Norte - Sur", "Escasez", "Literatura", "Conclusión"],
+        hero: {
+          eyebrow: "Arqueología culinaria de Vietnam",
+          title: "Phở Việt: orígenes y variaciones",
+          copy: "De una comida callejera del norte de Vietnam a comienzos del siglo XX, el phở se convirtió en un símbolo global. En Nam Định, Hanói, Saigón o durante la época de escasez, su alma sigue anclada en el caldo de huesos de res cocido durante horas y en su base de especias.",
+          facts: [
+            ["1900", "Etapa en la que el oficio del phở de Vân Cù, Nam Định, empezó a tomar forma."],
+            ["8-10 horas", "Tiempo central de cocción de huesos para crear dulzor, gelatina y profundidad."],
+            ["2 ejes de sabor", "El Phở Bắc es claro y sobrio. El Phở Nam es abundante, más intenso y lleno de hierbas."]
+          ]
+        },
+        sections: [
+          {
+            id: "dan-nhap",
+            kicker: "1. Introducción",
+            title: "De las rupturas históricas a un ancla de identidad",
+            intro: "El phở no es solo una sopa con fideos de arroz, carne de res o pollo y hierbas. El informe original lo entiende como un ecosistema culinario que contiene historia, bioquímica, geografía, literatura e identidad vietnamita.",
+            layout: "lead",
+            proseTitle: "Un embajador cultural no oficial",
+            paragraphs: [
+              "De plato humilde para trabajadores del norte, el phở cruzó fronteras geográficas e ideológicas hasta convertirse en símbolo cultural global. Que la palabra \"pho\" aparezca en grandes diccionarios ingleses y que restaurantes de phở figuren en la Guía Michelin muestra ese recorrido.",
+              "Más importante aún: el phở no es estático. Cada región añade sus plantas, condimentos y hábitos de consumo. Aun así, el informe subraya un principio constante: el phở se sostiene sobre un caldo de huesos extraído durante muchas horas y un conjunto básico de especias aromáticas."
+            ],
+            noteTitle: "Tesis central",
+            note: "Las hierbas, carnes, salsas, vinagre, lima o masa frita pueden cambiar según la región. La raíz que conserva la identidad del phở es el caldo de huesos de res cocido durante horas, clarificado, perfumado y equilibrado con jengibre y cebolla asados, canela, anís estrellado, cardamomo, salsa de pescado y un espumado paciente."
+          },
+          {
+            id: "nguon-goc",
+            kicker: "2. Arqueología culinaria",
+            title: "Orígenes tempranos y eje norte del phở",
+            intro: "El informe sitúa el phở en los intercambios culturales de comienzos del siglo XX, pero también cuestiona teorías extranjeras demasiado simplificadas.",
+            layout: "timeline",
+            cards: [
+              ["Pot-au-feu", "Hipótesis francesa", "La semejanza principal es la carne de res y el sonido de \"feu\". Pero el pot-au-feu usa verduras de clima templado, piezas enteras guisadas y pan, muy lejos de la estructura de caldo con fideos de arroz del phở."],
+              ["Ngưu nhục phấn", "Hipótesis china", "Este plato se parece a una sopa de fideos con res, pero su caldo depende de hierbas medicinales chinas. El phở vietnamita es más contenido, usa láminas de arroz cortadas planas y salsa de pescado local."],
+              ["Xáo trâu", "Raíz local", "El informe considera esta hipótesis la más convincente: el phở evolucionó del guiso norteño de búfalo. Cuando la carne y los huesos de res se hicieron más disponibles durante la colonia francesa, los vendedores sustituyeron el búfalo y ajustaron las especias."],
+              ["Nam Định - Hanói", "Difusión y refinamiento", "Vân Cù, en Nam Định, es visto como la cuna del oficio. Hanói fijó criterios de caldo claro, fideos elásticos y corte preciso de carne, convirtiendo el phở en símbolo urbano."]
+            ]
+          },
+          {
+            id: "khoa-hoc",
+            kicker: "3. Bioquímica",
+            title: "El caldo es el alma del phở",
+            intro: "Cocer huesos durante 8-10 horas no es solo tradición. Desde la ciencia de los alimentos, controla aromas, extrae colágeno, crea gelatina y mantiene el caldo claro.",
+            layout: "science",
+            cards: [
+              ["Reacción de Maillard", "El jengibre y la cebolla se asan antes de entrar en la olla. El calor hace reaccionar azúcares y aminoácidos, crea notas caramelizadas y tostadas, y suaviza el olor pesado de la grasa de res."],
+              ["Colágeno en gelatina", "Los huesos de caña y tejidos conectivos necesitan calor prolongado para transformar colágeno en gelatina. Esa gelatina da al caldo una sensación sedosa y plena sin volverlo espeso como un guiso occidental."],
+              ["Claro no significa débil", "Un caldo claro no tiene proteínas coaguladas flotando ni grasa emulsionada. Por eso se cuece a fuego suave, se espuma constantemente y se evita el hervor fuerte que enturbia y pesa el sabor."]
+            ]
+          },
+          {
+            id: "so-sanh",
+            kicker: "4. Divergencia regional",
+            title: "Comparación visual: Phở Bắc y Phở Nam",
+            intro: "La imagen está colocada justo en la sección comparativa: a la izquierda, el Phở Bắc minimalista con caldo claro y pocas hierbas crudas; a la derecha, el Phở Nam abundante con hierbas, brotes, lima, hoisin y salsa picante.",
+            layout: "compare",
+            labels: ["Phở Bắc - izquierda", "Phở Nam - derecha"],
+            imageAlt: "Imagen comparativa: Phở Bắc a la izquierda y Phở Nam a la derecha con hierbas, condimentos y distintos estilos de caldo.",
+            captions: [
+              ["Phở Bắc: claro, elegante, sobrio", "El foco está en el caldo de huesos, la carne de res cortada fina, cebollín, cebolla partida y cilantro. Normalmente no hay gran plato de hierbas crudas para conservar calor y sabor original."],
+              ["Phở Nam: rico, abundante, herbal", "El caldo suele ser más dulce y graso. En la mesa aparecen brotes, albahaca tailandesa, culantro, rau ôm, lima, chile, hoisin y salsa roja para personalizar el bol."]
+            ],
+            tableHeaders: ["Rasgo", "Phở Bắc", "Phở Nam"],
+            tableRows: [
+              ["Filosofía", "Minimalista, elegante, centrada en el sabor original del caldo de huesos.", "Abierta, de varias capas, con gran libertad para que cada persona ajuste el sabor."],
+              ["Caldo", "Cristalino, dulzor natural de huesos de res, especias secas usadas con moderación.", "Algo más turbio, más graso y con dulzor más marcado por azúcar de roca y gusto sureño."],
+              ["Fideos de arroz", "Anchos, planos, suaves pero sin deshacerse.", "Más finos, largos y elásticos, cercanos a los hábitos de fideos del sur."],
+              ["Carnes", "Res cruda, cocida, pecho, pecho graso, cortadas finamente y en estilo clásico.", "Más variadas, con tendón, callos, albóndigas de res y otras opciones."],
+              ["Hierbas", "Cebollín, cebolla partida, cilantro. Sin gran plato de hierbas crudas.", "Brotes, albahaca tailandesa, culantro, rau ôm. El plato de hierbas es parte de su identidad."],
+              ["Condimentos", "Vinagre con ajo, chile fresco, a veces masa frita crujiente.", "Lima, chile, hoisin, salsa roja. Huella clara del intercambio culinario chino-vietnamita."]
+            ],
+            profileTabs: ["Perfil Phở Bắc", "Perfil Phở Nam"],
+            profileRows: [
+              ["Claridad", 94, 58],
+              ["Dulzor natural", 68, 92],
+              ["Riqueza grasa", 44, 78],
+              ["Aroma de canela y anís", 76, 54],
+              ["Hierbas crudas", 12, 96],
+              ["Personalización", 34, 90]
+            ]
+          },
+          {
+            id: "bao-cap",
+            kicker: "5. Memoria de la escasez",
+            title: "\"Phở sin piloto\" y la resistencia de la memoria",
+            intro: "Durante la escasez previa a las reformas Đổi mới de 1986, la gente llamaba con humor amargo \"phở sin piloto\" a los boles con caldo, fideos y cebolla, pero sin carne. La frase muestra que el phở seguía vivo en la memoria colectiva aunque faltaran ingredientes.",
+            layout: "prose",
+            proseTitle: "Un museo vivo de la vida cotidiana",
+            paragraphs: [
+              "En Hanói se hacía fila con cupones de racionamiento, a veces guardando el lugar con sandalias o ladrillos. El phở de los comedores estatales casi no tenía carne, pero intentaba conservar canela, anís estrellado y sabor de hueso como rastro de cultura urbana.",
+              "Esta sección no romantiza la pobreza. Recuerda que el núcleo del phở - caldo de huesos y memoria compartida - fue lo bastante fuerte para sobrevivir a escasez económica, guerra y rupturas sociales."
+            ]
+          },
+          {
+            id: "van-chuong",
+            kicker: "6. El phở en la literatura",
+            title: "Cuando un bol de phở se vuelve lenguaje de memoria",
+            intro: "Grandes escritores transformaron el phở de comida callejera en objeto estético, social e identitario.",
+            layout: "quotes",
+            quotes: [
+              ["Nguyễn Tuân vio el phở como un regalo clásico de carácter nacional y creó un vocabulario de conocedor alrededor de cortes, huesos y cultura de beber.", "Nguyễn Tuân"],
+              ["Thạch Lam definió el buen bol: caldo claro y dulce, fideos flexibles, pecho graso crujiente, con lima, chile y cebolla en equilibrio.", "Thạch Lam"],
+              ["Vũ Bằng escribió el phở como un mapa de memoria del exiliado, donde el dulzor natural del caldo no puede ser reemplazado por sustancias químicas.", "Vũ Bằng"]
+            ]
+          },
+          {
+            id: "tong-luan",
+            kicker: "7. Conclusión",
+            title: "Unidad dentro de la diversidad",
+            intro: "Phở Bắc, Phở Nam y el phở de la época de escasez son variaciones superficiales de un mismo genoma culinario. Carne, hierbas, salsas y hábitos pueden cambiar; caldo de huesos cocido durante horas, jengibre y cebolla asados, y especias básicas siguen siendo el alma.",
+            layout: "prose",
+            proseTitle: "El genoma culinario del phở",
+            paragraphs: [
+              "El informe concluye que el phở es una entidad viva, con base bioquímica y profundidad cultural. Las diferencias regionales no rompen su definición; prueban su capacidad de adaptarse al clima, la historia y la comunidad.",
+              "Por eso, el viaje global del phở en el siglo XXI no debería separarse de su origen: huesos de caña cocidos 8-10 horas, aroma creado por la reacción de Maillard del jengibre y la cebolla asados, fuego suave, espumado paciente y cultura vietnamita de comer."
+            ]
+          }
+        ],
+        referencesTitle: "Fuentes del PDF",
+        profileUnit: "/100"
       }
     };
 
-    const bars = document.querySelector("#bars");
-    const tabs = document.querySelectorAll(".tab");
-    const panel = document.querySelector("#profile-panel");
+    const main = document.querySelector("#main-content");
+    const languageSwitcher = document.querySelector("#language-switcher");
+    let activeLanguage = localStorage.getItem("pho-language") || "vi";
 
-    function renderProfile(region) {
-      const profile = profiles[region];
-      bars.innerHTML = profile.rows.map(([label, value]) => `
-        <div class="bar ${profile.className}">
-          <div class="bar__top">
-            <span>${label}</span>
-            <span>${value}/100</span>
-          </div>
-          <div class="bar__track" aria-hidden="true">
-            <div class="bar__fill" style="--value: ${value}%"></div>
-          </div>
-        </div>
-      `).join("");
-
-      tabs.forEach((tab) => {
-        const selected = tab.dataset.region === region;
-        tab.setAttribute("aria-selected", selected ? "true" : "false");
-      });
-      panel.setAttribute("aria-labelledby", profile.tab);
+    function createEl(tag, className, text) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      if (text !== undefined) el.textContent = text;
+      return el;
     }
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => renderProfile(tab.dataset.region));
-    });
+    function sectionHead(section) {
+      const head = createEl("div", "section-head");
+      head.append(createEl("p", "kicker", section.kicker));
+      head.append(createEl("h2", "", section.title));
+      head.append(createEl("p", "", section.intro));
+      return head;
+    }
 
-    renderProfile("north");
+    function renderLead(section) {
+      const grid = createEl("div", "lead-grid");
+      const prose = createEl("article", "prose");
+      prose.append(createEl("h3", "", section.proseTitle));
+      section.paragraphs.forEach((paragraph) => prose.append(createEl("p", "", paragraph)));
+
+      const note = createEl("aside", "note");
+      note.append(createEl("strong", "", section.noteTitle));
+      note.append(createEl("p", "", section.note));
+      grid.append(prose, note);
+      return grid;
+    }
+
+    function renderTimeline(section) {
+      const grid = createEl("div", "timeline");
+      section.cards.forEach(([title, subtitle, copy]) => {
+        const article = createEl("article");
+        article.append(createEl("strong", "", title));
+        article.append(createEl("span", "", subtitle));
+        article.append(createEl("p", "", copy));
+        grid.append(article);
+      });
+      return grid;
+    }
+
+    function renderScience(section) {
+      const grid = createEl("div", "science");
+      section.cards.forEach(([title, copy]) => {
+        const article = createEl("article");
+        article.append(createEl("h3", "", title));
+        article.append(createEl("p", "", copy));
+        grid.append(article);
+      });
+      return grid;
+    }
+
+    function renderProse(section) {
+      const article = createEl("article", "prose");
+      article.append(createEl("h3", "", section.proseTitle));
+      section.paragraphs.forEach((paragraph) => article.append(createEl("p", "", paragraph)));
+      return article;
+    }
+
+    function renderQuotes(section) {
+      const grid = createEl("div", "quote-grid");
+      section.quotes.forEach(([quote, author]) => {
+        const blockquote = createEl("blockquote");
+        blockquote.append(createEl("p", "", quote));
+        blockquote.append(createEl("footer", "", author));
+        grid.append(blockquote);
+      });
+      return grid;
+    }
+
+    function renderComparison(section) {
+      const outer = createEl("div", "compare-layout");
+      const figure = createEl("figure", "photo-compare");
+      const frame = createEl("div", "photo-frame");
+      frame.append(createEl("span", "label label--north", section.labels[0]));
+      frame.append(createEl("span", "label label--south", section.labels[1]));
+      const img = document.createElement("img");
+      img.src = "pho-bac-pho-nam.jpeg";
+      img.alt = section.imageAlt;
+      frame.append(img);
+
+      const caption = createEl("figcaption", "photo-caption");
+      section.captions.forEach(([title, copy]) => {
+        const div = createEl("div");
+        div.append(createEl("strong", "", title));
+        div.append(createEl("p", "", copy));
+        caption.append(div);
+      });
+      figure.append(frame, caption);
+
+      const table = createEl("div", "comparison-table");
+      table.setAttribute("role", "table");
+      table.setAttribute("aria-label", section.title);
+      const header = createEl("div", "comparison-row");
+      header.setAttribute("role", "row");
+      section.tableHeaders.forEach((label) => {
+        const cell = createEl("div", "", label);
+        cell.setAttribute("role", "columnheader");
+        header.append(cell);
+      });
+      table.append(header);
+      section.tableRows.forEach((row) => {
+        const rowEl = createEl("div", "comparison-row");
+        rowEl.setAttribute("role", "row");
+        row.forEach((text) => {
+          const cell = createEl("div", "", text);
+          cell.setAttribute("role", "cell");
+          rowEl.append(cell);
+        });
+        table.append(rowEl);
+      });
+
+      const profile = createEl("div", "profile");
+      const tabs = createEl("div", "profile__tabs");
+      tabs.setAttribute("role", "tablist");
+      tabs.setAttribute("aria-label", section.title);
+      const bars = createEl("div", "bars");
+      const northButton = createEl("button", "tab", section.profileTabs[0]);
+      const southButton = createEl("button", "tab", section.profileTabs[1]);
+      northButton.type = "button";
+      southButton.type = "button";
+      northButton.setAttribute("role", "tab");
+      southButton.setAttribute("role", "tab");
+      tabs.append(northButton, southButton);
+      profile.append(tabs, bars);
+
+      function renderBars(region) {
+        const isNorth = region === "north";
+        northButton.setAttribute("aria-selected", isNorth ? "true" : "false");
+        southButton.setAttribute("aria-selected", isNorth ? "false" : "true");
+        bars.innerHTML = "";
+        section.profileRows.forEach(([label, north, south]) => {
+          const value = isNorth ? north : south;
+          const row = createEl("div", isNorth ? "bar" : "bar bar--south");
+          const top = createEl("div", "bar__top");
+          top.append(createEl("span", "", label));
+          top.append(createEl("span", "", `${value}${content[activeLanguage].profileUnit}`));
+          const track = createEl("div", "bar__track");
+          track.setAttribute("aria-hidden", "true");
+          const fill = createEl("div", "bar__fill");
+          fill.style.setProperty("--value", `${value}%`);
+          track.append(fill);
+          row.append(top, track);
+          bars.append(row);
+        });
+      }
+
+      northButton.addEventListener("click", () => renderBars("north"));
+      southButton.addEventListener("click", () => renderBars("south"));
+      renderBars("north");
+
+      outer.append(figure, table, profile);
+      return outer;
+    }
+
+    function renderSection(section) {
+      const wrapper = createEl("section", "wrap");
+      wrapper.id = section.id;
+      wrapper.append(sectionHead(section));
+
+      const renderers = {
+        lead: renderLead,
+        timeline: renderTimeline,
+        science: renderScience,
+        compare: renderComparison,
+        prose: renderProse,
+        quotes: renderQuotes
+      };
+      wrapper.append(renderers[section.layout](section));
+      return wrapper;
+    }
+
+    function renderReferences(copy) {
+      document.querySelector("#references-title").textContent = copy.referencesTitle;
+      const list = document.querySelector("#references-list");
+      list.innerHTML = "";
+      references.forEach(([label, url]) => {
+        const li = createEl("li");
+        const link = createEl("a", "", label);
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+        li.append(link);
+        list.append(li);
+      });
+    }
+
+    function renderLanguageSwitcher(copy) {
+      languageSwitcher.setAttribute("aria-label", copy.languageLabel);
+      languageSwitcher.innerHTML = "";
+      languages.forEach((language) => {
+        const button = createEl("button", "", language.label);
+        button.type = "button";
+        button.setAttribute("aria-label", language.name);
+        button.setAttribute("aria-pressed", language.code === activeLanguage ? "true" : "false");
+        button.addEventListener("click", () => setLanguage(language.code));
+        languageSwitcher.append(button);
+      });
+    }
+
+    function setLanguage(languageCode) {
+      activeLanguage = content[languageCode] ? languageCode : "vi";
+      localStorage.setItem("pho-language", activeLanguage);
+      const copy = content[activeLanguage];
+      document.documentElement.lang = activeLanguage;
+      document.title = copy.metaTitle;
+      document.querySelector('meta[name="description"]').setAttribute("content", copy.metaDescription);
+      document.querySelector(".nav").setAttribute("aria-label", copy.navLabel);
+      document.querySelector("#hero-eyebrow").textContent = copy.hero.eyebrow;
+      document.querySelector("#hero-title").textContent = copy.hero.title;
+      document.querySelector("#hero-copy").textContent = copy.hero.copy;
+      document.querySelector("#hero-facts").innerHTML = "";
+      copy.hero.facts.forEach(([number, label]) => {
+        const fact = createEl("div", "fact");
+        fact.append(createEl("strong", "", number));
+        fact.append(createEl("span", "", label));
+        document.querySelector("#hero-facts").append(fact);
+      });
+      ["intro", "origin", "science", "compare", "memory", "literature", "summary"].forEach((key, index) => {
+        document.querySelector(`#nav-${key}`).textContent = copy.nav[index];
+      });
+      renderLanguageSwitcher(copy);
+      main.innerHTML = "";
+      copy.sections.forEach((section) => main.append(renderSection(section)));
+      renderReferences(copy);
+    }
+
+    setLanguage(activeLanguage);
   </script>
 </body>
 </html>
